@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".welcome.WelcomeActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/apBaar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="0dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Welcome"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/textColor" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:visibility="gone"
+                    android:id="@+id/signOut"
+                    android:layout_width="80dp"
+                    android:layout_height="32dp"
+                    android:text="Sign Out"
+                    android:fontFamily="@font/montserrat"
+                    android:textSize="12dp"
+                    android:textAllCaps="false"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/button_corner"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp" />
+
+                <ImageView
+                    android:id="@+id/ivLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/margin10"
+                    android:src="@drawable/baseline_exit_to_app_white_36" />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/containerSwipeWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/apBaar"
+        app:layout_constraintTop_toBottomOf="@+id/apBaar"
+        app:layout_constraintVertical_bias="0">-->
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_marginEnd="@dimen/margin10"
+            android:layout_below="@id/apBaar"
+            android:orientation="vertical"
+            tools:listitem="@layout/recyclerview_layout_welcome_screen"
+            />
+
+    <!--</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+    <TextView
+        android:id="@+id/noItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin40"
+        android:text="No students found"
+        android:textAppearance="@style/Textstyle18SizeBold"
+        android:textColor="@color/colorPrimary"
+        android:layout_centerInParent="true"
+        android:textSize="18dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>
+</layout>

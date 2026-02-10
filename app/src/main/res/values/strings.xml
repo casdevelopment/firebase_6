@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">ESM</string>
+    <string name="base_url">empty</string>
+    <string name="mobile_code">empty</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="alert">Alert &amp; SMS</string>
+    <string name="event">Event &amp; calendar</string>
+    <string name="download_voucher">Download Voucher</string>
+    <string name="institute_brand">Institute Brand</string>
+    <string name="tabDatesheet">Datesheet</string>
+    <string name="alert_">Alert!</string>
+    <string name="logout_confirmation_message">Are you sure you want to logout?</string>
+
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="app_name2">Ali Foundation Girls High School</string>
+    <string name="app_name1">Ali Foundation School System</string>
+    <string name="app_name_akti"> Arfa Karim Tech Incubator</string>
+    <string name="app_name_arqamhouse">Arqamhouse Public Boys High School </string>
+    <string name="app_name_a">AUSTRALIAN</string>
+    <string name="app_name3">INTERNATIONAL SCHOOL</string>
+
+
+    <string name="by_clicking_on_button_you_are_agree_with_our_privacy_policy">By clicking on button you are agree with our \n <u><b>Privacy Policy</b></u> </string>
+    <string name="privacy_policy"><u>Privacy Policy</u> </string>
+    <string name="by_clicking_on_button_you_are_agree_with_our_privacy_policy_ais">By clicking on button you are agree with our  </string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="powered_by_cas">Powered By </string>
+    <string name="cyber_advance_solutions">Cyber Advance Solutions</string>
+    <string name="don_t_have_an_account_signup">Don\'t have an account? SignUp</string>
+    <string name="field_required">Field Required!!</string>
+    <string name="password_characters_length">Password should be atleast 8 characters long!</string>
+
+    <string name="pathmorph_plusminus_plus_path">M 5,11 L 11,11 L 11,5 L 13,5 L 13,11 L 19,11 L 19,13 L 13,13 L 13,19 L 11,19 L 11,13 L 5,13 Z</string>
+    <string name="pathmorph_plusminus_minus_path">M 5,11 L 11,11 L 11,11 L 13,11 L 13,11 L 19,11 L 19,13 L 13,13 L 13,13 L 11,13 L 11,13 L 5,13 Z</string>
+    <string name="unable_to_open_file">Unable to open file</string>
+    <string name="school_and_academy_jubilee_town_lahore">School and Academy Jubilee Town Lahore</string>
+    <string name="apply_leave">Apply Leave</string>
+    <string name="select_user_type">Select User Type</string>
+    <string name="parent_login">Parent Login</string>
+    <string name="teacher_login">Teacher Login</string>
+
+
+</resources>

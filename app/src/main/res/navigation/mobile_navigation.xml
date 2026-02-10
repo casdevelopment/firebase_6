@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.esm.dashboardfragment.DashboardFragment"
+        android:label="DashboardFragment" >
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_paymentHistoryFragment"
+            app:destination="@id/paymentHistoryFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_alertSMSFragment"
+            app:destination="@id/alertSMSFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_feeCardFragment"
+            app:destination="@id/feeCardFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_eventsCalendarFragment"
+            app:destination="@id/eventsCalendarFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_hostelFragment"
+            app:destination="@id/hostelFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_studentConsultancyFragment"
+            app:destination="@id/studentConsultancyFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_studentTimeTableFragment"
+            app:destination="@id/studentTimeTableFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_complaintFragment"
+            app:destination="@id/complaintFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_noticeFragment"
+            app:destination="@id/noticeFragment"
+            />
+        <action
+            android:id="@+id/action_dashboardFragment_to_policyFragment"
+            app:destination="@id/policyFragment" />
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/paymentHistoryFragment"
+        android:name="com.example.esm.paymenthistory.PaymentHistoryFragment"
+        android:label="PaymentHistoryFragment" />
+    <fragment
+        android:id="@+id/attendanceFragment"
+        android:name="com.example.esm.attendance.AttendanceFragment"
+        android:label="AttendanceFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.example.esm.results.ResultsFragment"
+        android:label="ResultsFragment" />
+    <fragment
+        android:id="@+id/alertSMSFragment"
+        android:name="com.example.esm.alertssms.AlertSMSFragment"
+        android:label="AlertSMSFragment" />
+    <fragment
+        android:id="@+id/feeCardFragment"
+        android:name="com.example.esm.feecard.FeeCardFragment"
+        android:label="FeeCardFragment" />
+    <fragment
+        android:id="@+id/eventsCalendarFragment"
+        android:name="com.example.esm.eventcalendar.EventsCalendarFragment"
+        android:label="EventsCalendarFragment" />
+    <fragment
+        android:id="@+id/diaryFragment"
+        android:name="com.example.esm.diary.DiaryFragment"
+        android:label="DiaryFragment" >
+        <argument
+            android:name="diaryType"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/hostelFragment"
+        android:name="com.example.esm.hostel.HostelFragment"
+        android:label="HostelFragment" />
+    <fragment
+        android:id="@+id/studentConsultancyFragment"
+        android:name="com.example.esm.studentconsultancy.StudentConsultancyFragment"
+        android:label="StudentConsultancyFragment" />
+    <fragment
+        android:id="@+id/studentTimeTableFragment"
+        android:name="com.example.esm.studenttimetable.StudentTimeTableFragment"
+        android:label="StudentTimeTableFragment" />
+    <fragment
+        android:id="@+id/complaintFragment"
+        android:name="com.example.esm.complaint.ComplaintFragment"
+        android:label="ComplaintFragment" >
+
+        <action
+            android:id="@+id/action_complaintFragment_to_newComplaintFragment"
+            app:destination="@id/newComplaintFragment" />
+        <action
+            android:id="@+id/action_complaintFragment_to_responseChatFragment"
+            app:destination="@id/responseChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newComplaintFragment"
+        android:name="com.example.esm.complaint.NewComplaintFragment"
+        android:label="NewComplaintFragment" />
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.example.esm.notice.NoticeFragment"
+        android:label="NoticeFragment" >
+        <action
+            android:id="@+id/action_noticeFragment_to_commonApiFragment"
+            app:destination="@id/commonApiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commonApiFragment"
+        android:name="com.example.esm.notice.fragment.CommonApiFragment"
+        android:label="CommonApiFragment" >
+
+        <argument
+            android:name="notification_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_commonApiFragment_to_noticeViewFragment"
+            app:destination="@id/noticeViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noticeViewFragment"
+        android:name="com.example.esm.notice.fragment.NoticeViewFragment"
+        android:label="NoticeViewFragment" >
+
+        <argument
+            android:name="notice_model"
+            app:argType="com.example.esm.notice.models.NoticeModel" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/responseChatFragment"
+        android:name="com.example.esm.complaint.ResponseChatFragment"
+        android:label="ResponseChatFragment" >
+        <argument
+            android:name="complainId"
+            app:argType="integer" />
+        <argument
+            android:name="userIdentity"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/policyFragment"
+        android:name="com.example.esm.policy.PolicyFragment"
+        android:label="PolicyFragment" />
+
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.example.esm.report.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" >
+        <argument
+            android:name="MYE"
+            app:argType="boolean" />
+        <argument
+            android:name="EOY"
+            app:argType="boolean" />
+        <argument
+            android:name="OLEVEL"
+            app:argType="boolean" />
+        <argument
+            android:name="MIDDLE"
+            app:argType="boolean" />
+    </fragment>
+</navigation>

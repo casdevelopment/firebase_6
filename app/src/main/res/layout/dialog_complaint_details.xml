@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:layout_gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_regular"/>
+
+    <EditText
+        android:id="@+id/titleComplaint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin10"
+        android:background="@drawable/rectangle_outer_box"
+        android:hint="Enter the title"
+        android:inputType="text"
+        android:maxLength="50"
+        android:paddingStart="@dimen/margin15"
+        android:paddingTop="@dimen/margin15"
+        android:paddingEnd="@dimen/margin15"
+        android:paddingBottom="@dimen/margin15"
+        android:singleLine="true"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_regular"
+        android:enabled="false"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_regular"/>
+    <EditText
+        android:id="@+id/complaintText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin10"
+        android:background="@drawable/rectangle_outer_box"
+        android:hint="Write your complaint message"
+        android:maxLength="200"
+        android:minHeight="120dp"
+        android:paddingStart="@dimen/margin15"
+        android:layout_gravity="start"
+        android:gravity="start"
+        android:paddingBottom="@dimen/margin15"
+        android:paddingTop="@dimen/margin15"
+        android:paddingEnd="@dimen/margin15"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:inputType="textMultiLine"
+        android:fontFamily="@font/montserrat_regular"
+        android:enabled="false"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitComplaint"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/margin10"
+        android:text="ok"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textFontWeight="300"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/textColor"
+        app:cornerRadius="@dimen/margin5"
+        app:strokeColor="@color/colorPrimary" />
+
+</LinearLayout>

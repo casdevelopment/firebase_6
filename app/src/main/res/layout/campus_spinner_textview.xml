@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:gravity="center"
+    android:layout_margin="20dp"
+    android:textAlignment="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:singleLine="true"
+    android:textSize="16sp"
+    android:padding="10dp"
+    android:text="College"
+
+    android:fontFamily="@font/roboto_bold"
+    android:textColor="@color/colorPrimary" />

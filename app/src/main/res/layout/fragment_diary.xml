@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".diary.DiaryFragment"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/headerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin15"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Daily Diary"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_marginStart="@dimen/margin30"
+                    android:layout_marginEnd="@dimen/margin30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/date"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="@dimen/margin10"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:orientation="horizontal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:textFontWeight="300"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/login_attributes_color"
+                        android:hint="Select date"
+                        android:paddingStart="@dimen/margin10"
+                        android:paddingEnd="@dimen/margin10"
+                        android:drawableRight="@drawable/baseline_date_range_black_18"
+                        android:drawableTint="@color/colorPrimary"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:inputType="none"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/showResult"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.15"
+                        android:text="Show diary"
+                        android:paddingStart="@dimen/margin5"
+                        android:paddingEnd="@dimen/margin5"
+                        android:paddingTop="@dimen/margin10"
+                        android:paddingBottom="@dimen/margin10"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:textFontWeight="300"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/textColor"
+                        app:cornerRadius="@dimen/margin5"
+                        app:strokeColor="@color/colorPrimary"
+                        android:includeFontPadding="false"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headerLayout">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/diaryRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                <TextView
+                    android:id="@+id/noItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin40"
+                    android:text="No diaries found"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</layout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin40"
+            android:weightSum="5">
+
+            <TextView
+                android:id="@+id/TFeeHeadName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textFontWeight="300"
+                android:fontFamily="@font/montserrat"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                />
+            <View
+                android:layout_width="@dimen/outebox_line_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/TPrevBalance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/login_attributes_color"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textFontWeight="300"
+                android:fontFamily="@font/montserrat"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                />
+
+            <View
+                android:layout_width="@dimen/outebox_line_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/TFeeHeadActualAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/login_attributes_color"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textFontWeight="300"
+                android:fontFamily="@font/montserrat"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                />
+            <View
+                android:layout_width="@dimen/outebox_line_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/TRemaining"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/login_attributes_color"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textFontWeight="300"
+                android:fontFamily="@font/montserrat"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                />
+
+        </LinearLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+
+</layout>

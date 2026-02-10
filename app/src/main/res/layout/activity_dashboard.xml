@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".dashboardactivity.DashboardActivity"
+            >
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="0dp">
+                <include
+                    android:id="@+id/actionbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    layout="@layout/action_bar_layout"/>
+
+                <LinearLayout
+                    android:id="@+id/profilePart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/studentImage"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="0.30"
+                        android:src="@drawable/avtr"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin10"
+                        android:layout_weight="0.70"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/studentName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/montserrat"
+                            android:textColor="@color/textColor" />
+
+                        <TextView
+                            android:id="@+id/studentClass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/montserrat"
+                            android:textColor="@color/textColor" />
+
+                        <TextView
+                            android:id="@+id/schoolName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="false"
+                            android:textSize="11sp"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/montserrat"
+                            android:textColor="@color/textColor" />
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin10">
+
+                        <!--     <com.learner_castly.ess.additionalclasses.CircularImageView
+                                 android:id="@+id/imageViewSchool"
+                                 android:layout_width="45dp"
+                                 android:layout_height="45dp"
+                                 android:layout_centerInParent="true"
+                                 android:contentDescription="@string/nav_header_desc"
+                                 android:src="@drawable/placeholder" />-->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            app:cardBackgroundColor="@color/colorWhite"
+                            app:cardCornerRadius="50dp">
+
+
+                            <ImageView
+
+                                android:id="@+id/imageViewSchool"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:contentDescription="@string/nav_header_desc"
+                                android:padding="6dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/placeholder" />
+
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/top_constraint_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/margin10"
+                android:paddingEnd="@dimen/margin10"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <fragment
+                    android:id="@+id/nav_host_fragment"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:defaultNavHost="true"
+                    app:layout_constraintBottom_toTopOf="@+id/bAppBar"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:navGraph="@navigation/mobile_navigation" />
+
+
+                <LinearLayout
+                    android:id="@+id/bAppBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:elevation="0dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1">
+
+                    <ImageView
+                        android:id="@+id/facebook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin15"
+                        android:layout_marginEnd="@dimen/margin15"
+                        android:src="@drawable/facebook"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/insta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin15"
+                        android:layout_marginEnd="@dimen/margin15"
+                        android:src="@drawable/instagram"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/twitter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin15"
+                        android:layout_marginEnd="@dimen/margin15"
+                        android:src="@drawable/twitter"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/youtube"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin15"
+                        android:layout_marginEnd="@dimen/margin15"
+                        android:src="@drawable/youtube"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/linkdin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin15"
+                        android:layout_marginEnd="@dimen/margin15"
+                        android:src="@drawable/linkedin"
+                        android:clickable="true" />
+
+                    <ImageView
+                        android:id="@+id/website"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin15"
+                        android:layout_marginEnd="@dimen/margin15"
+                        android:src="@drawable/outline_public_white_36"
+                        android:clickable="true"
+                        app:tint="@color/colorPrimary"/>
+                </LinearLayout>
+
+                <!--               <TextView
+                                   android:id="@+id/copyright"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="@string/copyright"
+                                   android:textAppearance="@style/Textstyle14SizeBold"
+                                   android:textColor="@color/colorPrimary"
+                                   app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                   app:layout_constraintBottom_toBottomOf="parent"
+                                   app:layout_constraintEnd_toEndOf="parent"
+                                   app:layout_constraintStart_toStartOf="parent"
+                                   app:layout_constraintTop_toTopOf="parent"
+                                   app:layout_constraintVertical_bias="0.95" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginStart="-5sp"
+            android:background="@color/colorPrimary"
+            android:fitsSystemWindows="true"
+            app:itemIconTint="@color/textColor"
+            app:itemTextColor="@color/textColor">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_nav_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/nav_header_height"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_vertical_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingBottom="@dimen/activity_vertical_margin">
+
+
+                        <!--   <com.example.esm.additionalclasses.CircularImageView
+                               android:id="@+id/imageViewStd"
+                               android:layout_width="70dp"
+                               android:layout_height="70dp"
+                               android:contentDescription="@string/nav_header_desc"
+                               android:src="@drawable/placeholder" />-->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/colorWhite"
+                            app:cardCornerRadius="50dp">
+
+
+                            <ImageView
+                                android:id="@+id/imageViewSchoolNavi"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:contentDescription="@string/nav_header_desc"
+                                android:padding="6dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/placeholder" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/margin10"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/schoolNameNavi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+                            <!-- <TextView
+                                 android:id="@+id/stdClassName"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="@{model.getSchoolName()}"
+                                 android:textAppearance="@style/Textstyle12SizeBold"
+                                 android:textColor="@color/textColor" />-->
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/payment_history_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+                                android:src="@drawable/payment_history_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Payment History"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/attendance_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+                                android:src="@drawable/attendance_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Attendance"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/result_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+
+                                android:src="@drawable/result_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Results"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/alert_sms_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+
+                                android:src="@drawable/sms_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="@string/alert"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/notifications_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+
+                                android:src="@drawable/alarm_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Notifications"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/feecard_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+
+                                android:src="@drawable/fee_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Fee Balance"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/events_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+
+                                android:src="@drawable/event_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="@string/event"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/complaint_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+                                android:src="@drawable/complaint_white_36" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Complaint"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/diary_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+                                android:src="@drawable/diary_white_36" />
+
+                            <TextView
+                                android:id="@+id/tv_diary"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Diary"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/update_password_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+                                android:src="@drawable/change_password_icon"
+                                app:tint="@color/colorWhite"/>
+
+                            <TextView
+                                android:id="@+id/tvUpdatePassword"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Update Password"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/update_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+                                android:src="@drawable/change_password_icon"
+                                app:tint="@color/colorWhite"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Change Password"
+                                android:textSize="14sp"
+                                android:textAppearance="@style/Textstyle14SizeRegular"
+                                android:textColor="@color/textColor"
+                                android:fontFamily="@font/montserrat" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/logout_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/margin15"
+                            android:paddingBottom="@dimen/margin15">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin15"
+                                android:layout_weight="0.40"
+                                android:src="@drawable/baseline_exit_to_app_white_36" />
+
+                            <TextView
+                                android:id="@+id/tvLogOut"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.70"
+                                android:text="Logout"
+                                android:textSize="14sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/montserrat"
+                                android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>
+
+                        <!--   <LinearLayout
+                               android:id="@+id/update_password_menu"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:clickable="true"
+                               android:focusable="true"
+                               android:foreground="?selectableItemBackground"
+                               android:gravity="center_vertical"
+                               android:orientation="horizontal"
+                               android:paddingTop="@dimen/margin15"
+                               android:paddingBottom="@dimen/margin15">
+
+                               <ImageView
+                                   android:layout_width="0dp"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginStart="@dimen/margin15"
+                                   android:layout_weight="0.40"
+                                   android:src="@drawable/baseline_exit_to_app_white_36" />
+
+                               <TextView
+                                   android:id="@+id/tvupdate_password"
+                                   android:layout_width="0dp"
+                                   android:layout_height="wrap_content"
+                                   android:layout_weight="0.70"
+                                   android:text="Update Password"
+                                   android:textSize="14sp"
+                                   android:textAllCaps="false"
+                                   android:fontFamily="@font/montserrat"
+                                   android:textColor="@color/textColor" />
+
+
+                        </LinearLayout>-->
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>
+

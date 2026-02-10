@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background_image"
+    android:descendantFocusability="beforeDescendants"
+    android:focusable="true"
+    tools:context=".signup.SignUpActivity">
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:gravity="center_horizontal"
+        android:src="@drawable/logo"
+        android:textColor="@color/textColor"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <LinearLayout
+        android:id="@+id/phoneNoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:padding="5dp"
+            android:text="Phone"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/phoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="12dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:background="@drawable/background_edit_text_bottom_border"
+            android:drawableTint="@color/colorWhite"
+            android:focusableInTouchMode="true"
+            android:inputType="phone"
+            android:maxLength="12"
+            android:padding="5dp"
+            android:text=""
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            app:cursorColor="@color/colorWhite"
+
+            />
+
+        <TextView
+            android:id="@+id/phoneNoError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:layout_marginTop="3dp"
+            android:labelFor="@+id/phoneNo"
+            android:text="Please enter phone number like (923001234567) "
+            android:textAppearance="@style/Textstyle12SizeRegular"
+            android:textColor="@color/colorPrimary"
+            android:visibility="visible" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:padding="5dp"
+            android:text="Code"
+            android:layout_marginTop="@dimen/margin15"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/entityCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:background="@drawable/background_edit_text_bottom_border"
+            android:drawableTint="@color/colorWhite"
+            android:focusableInTouchMode="true"
+            android:inputType="number"
+            android:maxLength="5"
+            android:paddingStart="12dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/entityCodeError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:labelFor="@+id/entityCode"
+            android:text="error"
+            android:textAppearance="@style/Textstyle12SizeRegular"
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin15"
+            android:includeFontPadding="false"
+            android:padding="5dp"
+            android:text="Password"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin5"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorWhite">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:padding="0dp"
+                android:lineSpacingExtra="0dp"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@drawable/background_edit_text_bottom_border"
+                android:drawableTint="@color/colorWhite"
+                android:focusableInTouchMode="true"
+                android:inputType="textPassword"
+                android:textColor="@color/textColor"
+                android:textSize="14sp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/passwordError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:labelFor="@+id/phoneNo"
+            android:layout_marginTop="3dp"
+            android:text="Password should be atleast 8 characters long"
+            android:textAppearance="@style/Textstyle12SizeRegular"
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone" />
+        <TextView
+            android:layout_marginTop="@dimen/margin20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:padding="5dp"
+            android:text="Confirm Password"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin5"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorWhite">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:padding="0dp"
+                android:lineSpacingExtra="0dp"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@drawable/background_edit_text_bottom_border"
+                android:drawableTint="@color/colorWhite"
+                android:focusableInTouchMode="true"
+                android:inputType="textPassword"
+                android:textColor="@color/textColor"
+                android:textSize="14sp"
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/confirmPasswordError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:labelFor="@+id/phoneNo"
+            android:layout_marginTop="3dp"
+            android:text="Password should be atleast 8 characters long"
+            android:textAppearance="@style/Textstyle12SizeRegular"
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone" />
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/proceedButton"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:text="Proceed"
+            android:textAllCaps="false"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:includeFontPadding="false"
+                android:text="@string/powered_by_cas"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textSize="20sp" />
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cas_logo" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/bot_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:includeFontPadding="false"
+            android:text="@string/cyber_advance_solutions"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:textSize="12sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:weightSum="3"
+        android:layout_marginTop="@dimen/margin10"
+        android:gravity="center_vertical"
+        android:id="@+id/viewComplaint"
+        android:background="@drawable/rectangle_shape_with_border">
+
+        <TextView
+            android:id="@+id/attendanceDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/margin10"
+            android:layout_marginStart="@dimen/margin10"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin5">
+
+            <TextView
+                android:id="@+id/complaintTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/login_attributes_color" />
+
+            <TextView
+                android:id="@+id/complaintStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textFontWeight="300"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/login_attributes_color"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/viewResponse"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_question_answer_black_36"
+            app:tint="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</layout>

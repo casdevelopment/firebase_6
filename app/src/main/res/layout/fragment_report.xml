@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_margin="20dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <LinearLayout
+                android:id="@+id/headerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Reports"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <!--middle Class ev type text-->
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/middleEvaluationTypeSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="Evaluation Type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <!--middle Class ev type spinner-->
+                    <Spinner
+                        android:visibility="gone"
+                        android:id="@+id/middleEvaluationTypeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:textSize="@dimen/textSize14"
+                        />
+
+
+                    <!--middle Class ev text-->
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/middleEvaluationSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="Evaluation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <!--middle Class ev spinner-->
+                    <Spinner
+                        android:visibility="gone"
+                        android:id="@+id/middleEvaluationSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:textSize="@dimen/textSize14"
+                        />
+
+
+
+                    <!--olevelEvaluationType text-->
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/olevelEvaluationTypeSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="Evaluation Type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <!--olevelEvaluationType spinner-->
+                    <Spinner
+                        android:visibility="gone"
+                        android:id="@+id/olevelEvaluationTypeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:textSize="@dimen/textSize14"
+                        />
+
+
+                    <!--olevel Evaluation text-->
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/olevelEvaluationSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="Evaluation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <!--olevel Evaluation  spinner-->
+                    <Spinner
+                        android:visibility="gone"
+                        android:id="@+id/olevelEvaluationSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:textSize="@dimen/textSize14"
+                        />
+
+                    <TextView
+                        android:id="@+id/evaluationTypeSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="Evaluation Type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                    <Spinner
+                        android:id="@+id/evaluationTypeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:textSize="@dimen/textSize14"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/myeEvaluationTypeSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="MYE Evaluation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <Spinner
+                        android:id="@+id/myeEvaluationTypeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:cursorVisible="false"
+                        android:drawableTint="@color/colorPrimary"
+                        android:focusable="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textAllCaps="false"
+                        />
+
+                    <TextView
+                        android:id="@+id/eoyEvaluationTypeSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="EOY Evaluation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <Spinner
+                        android:id="@+id/eoyEvaluationTypeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:cursorVisible="false"
+                        android:drawableTint="@color/colorPrimary"
+                        android:focusable="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textAllCaps="false"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/selectExamSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="Select Exam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <Spinner
+                        android:id="@+id/selectExamSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:cursorVisible="false"
+                        android:drawableTint="@color/colorPrimary"
+                        android:focusable="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textAllCaps="false"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/selectTermSpinnerText"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="Select Term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <Spinner
+                        android:id="@+id/selectTermSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:cursorVisible="false"
+                        android:drawableTint="@color/colorPrimary"
+                        android:focusable="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textAllCaps="false"
+                        />
+
+
+
+
+
+
+                    <EditText
+                        android:id="@+id/fromDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/baseline_date_range_black_18"
+                        android:drawableTint="@color/colorPrimary"
+                        android:focusable="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="From date"
+                        android:inputType="none"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/toDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/baseline_date_range_black_18"
+                        android:drawableTint="@color/colorPrimary"
+                        android:focusable="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="To date"
+                        android:inputType="none"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/examDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/spinner_backgound_result_screen"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/baseline_date_range_black_18"
+                        android:drawableTint="@color/colorPrimary"
+                        android:focusable="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Exam Date"
+                        android:inputType="none"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="12sp" />
+
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/showButton"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:includeFontPadding="false"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Show"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textFontWeight="300"
+                        android:textSize="12sp"
+                        app:cornerRadius="5dp"
+                        app:strokeColor="@color/colorPrimary" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+
+</layout>

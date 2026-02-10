@@ -1,0 +1,55 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ESM" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.ESM" parent="Base.Theme.ESM" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+<!--    <style name="Base.V7.Widget.AppCompat.EditText" parent="android:Widget.EditText">-->
+<!--&lt;!&ndash;        <item name="android:textCursorDrawable">@drawable/abc_text_cursor_material</item>&ndash;&gt;-->
+<!--        <item name="android:textCursorDrawable"></item>-->
+<!--    </style>-->
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="CalenderViewDateCustomText" parent="TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+        <item name="android:textColor">@drawable/calender_date_selector</item>
+        <item name="colorControlHighlight">@color/black</item>
+
+    </style>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <!--        <item name="android:paddingLeft">10dp</item> &lt;!&ndash; Adjust the padding if needed &ndash;&gt;-->
+
+    </style>
+    <style name="SpinnerTheme" parent="Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:itemTextAppearance">@color/colorWhite</item>
+        <!-- Change to your desired text color -->
+        <!--        <item name="android:background">@color/black</item> &lt;!&ndash; Change to your desired text color &ndash;&gt;-->
+        <!-- Add any other styling attributes you want -->
+    </style>
+
+    <style name="SpinnerStyle2" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+
+
+</resources>

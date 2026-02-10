@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--main app theme color-->
+   <!-- <color name="colorPrimary">#32AADE</color>
+    <color name="colorPrimaryDark">#32AADE</color>
+    <color name="colorAccent">#32AADE</color>
+    &lt;!&ndash; student list item default &ndash;&gt;
+    <color name="end_color_item">#5D6498</color>
+    <color name="start_color_item">#6ACAE9</color>-->
+
+
+    <color name="orange_stars">#ff6433</color>
+    <color name="blue_dark">#320E72</color>
+
+
+
+    <!--KPSI -->
+
+
+    <!--<color name="colorPrimary">#2e3192</color>        &lt;!&ndash; Deep Maroon &ndash;&gt;
+    <color name="colorPrimaryDark">#282B7C</color>    &lt;!&ndash; Dark Maroon &ndash;&gt;
+    <color name="colorAccent">#ffca08</color>         &lt;!&ndash; Bright Maroon/Crimson &ndash;&gt;
+    <color name="start_color_item">#2e3192</color>    &lt;!&ndash; Medium Maroon &ndash;&gt;
+    <color name="end_color_item">#282B7C</color>      &lt;!&ndash; Very Dark Maroon &ndash;&gt;-->
+
+
+    <!--fssa-->
+    <color name="colorPrimary">#00a3e4</color>
+    <color name="colorPrimaryDark">#2e365b</color>
+    <color name="colorAccent">#f48333</color>
+    <color name="start_color_item">#00a3e4</color>
+    <color name="end_color_item">#2e365b</color>
+
+
+
+
+
+
+
+    <color name="textColor">#ffffff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="login_attributes_color">#6A6766</color>
+    <color name="colorSecondary">#ffde59</color>
+    <color name="loginBtColor">#a16ce6</color>
+
+
+
+
+    <color name="greenStatus">#05CA03</color>
+    <color name="yellowStatus">#FF00FF</color>
+    <color name="redStatus">#FB3B3B</color>
+    <color name="box_chat_left_color">#2879FF</color>
+
+    <color name="daysLabelColor">#8A000000</color>
+
+    <color name="currentMonthDayColor">#de000000</color>
+
+    <color name="nextMonthDayColor">#1F000000</color>
+
+    <color name="disabledDialogButtonColor">#1F000000</color>
+
+    <color name="itemHighlightColor">#1F000000</color>
+
+    <color name="itemFocusedColor">#1A000000</color>
+
+    <color name="defaultColor">#2962FF</color>
+    <color name="black">#000000</color>
+    <color name="dark_green">#035A01</color>
+
+
+
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/resultChildLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin40"
+            android:weightSum="5"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp">
+
+            <TextView
+                android:id="@+id/dateResult"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/margin40"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp"
+                tools:text="30 April 2024"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/login_attributes_color"
+                />
+
+            <TextView
+                android:id="@+id/tvSubject"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/margin40"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp"
+                tools:text="Urdu Written"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/login_attributes_color" />
+
+            <TextView
+                tools:text="100"
+                android:id="@+id/tvTotalMarks"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/margin40"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/login_attributes_color" />
+
+            <TextView
+                tools:text="100"
+                android:id="@+id/tvObtMarks"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/margin40"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/login_attributes_color" />
+
+            <TextView
+                tools:text="80.99"
+                android:id="@+id/tvPercentage"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/margin40"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/login_attributes_color" />
+
+        </LinearLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+</layout>

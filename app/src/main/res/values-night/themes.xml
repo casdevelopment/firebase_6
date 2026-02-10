@@ -1,0 +1,71 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ESM" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+    <style name="TextAppearenceCustomFont" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Textstyle12SizeRegular" parent="TextAppearenceCustomFont">
+        <item name="android:textSize">@dimen/textSize12</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textFontWeight">300</item>
+    </style>
+
+    <style name="Textstyle22SizeBold" parent="TextAppearenceCustomFont">
+        <item name="android:textSize">@dimen/textSize22</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="Textstyle18SizeBold" parent="TextAppearenceCustomFont">
+
+        <item name="android:textSize">@dimen/textSize18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="textAppearanceMenuCollapsed" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/textSize18</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+    <style name="Textstyle10SizeRegular" parent="TextAppearenceCustomFont">
+        <item name="android:textSize">@dimen/textSize10</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="Textstyle11SizeRegular" parent="TextAppearenceCustomFont">
+        <item name="android:textSize">@dimen/textSize11</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="Textstyle14SizeBold" parent="TextAppearenceCustomFont">
+
+        <item name="android:textSize">@dimen/textSize14</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="Textstyle16SizeRegular" parent="TextAppearenceCustomFont">
+
+        <item name="android:textSize">@dimen/textSize16</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="Textstyle16SizeBold" parent="TextAppearenceCustomFont">
+        <item name="android:textSize">@dimen/textSize16</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="Textstyle14SizeRegular" parent="TextAppearenceCustomFont">
+
+        <item name="android:textSize">@dimen/textSize14</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+</resources>

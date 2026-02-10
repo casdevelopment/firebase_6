@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/margin10"
+            android:paddingBottom="@dimen/margin10"
+            android:gravity="center_vertical"
+            android:id="@+id/header">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.90"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="Evaluation: "
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textFontWeight="300"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/evaluation_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:includeFontPadding="false"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:textFontWeight="300"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/login_attributes_color" />
+            </LinearLayout>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.10"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:id="@+id/expand_icon"
+                app:srcCompat="@drawable/plus_minus_animation_selector"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resultHeaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_outer_box"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="5">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/margin40"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_outer_box_one_side_radius_top_left"
+                    android:gravity="center"
+                    android:text="Date"
+                    android:textSize="10sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/textColor" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/margin40"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Subject"
+                    android:textSize="10sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/margin40"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="Total Marks"
+                    android:textSize="10sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/textColor" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/margin40"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Obt Marks"
+                    android:textSize="10sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/margin40"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_outer_box_one_side_radius_top_right"
+                    android:gravity="center"
+                    android:text="Percentage"
+                    android:textSize="10sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/textColor" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/childResultRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:scrollbars="none"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <!--            <View-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="1dp"-->
+            <!--                android:background="@color/colorPrimary" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin40"
+                android:orientation="vertical"
+                android:id="@+id/resultChildLayout">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="5"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/margin40"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Total"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textAllCaps="false"
+                        android:textFontWeight="300"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/login_attributes_color"
+                        android:id="@+id/dateResult"/>
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/margin40"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="10sp"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/montserrat"
+                        android:textFontWeight="300"
+                        android:textColor="@color/login_attributes_color" />
+
+                    <TextView
+                        android:id="@+id/tvTotalMarksSum"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/margin40"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textAllCaps="false"
+                        android:textFontWeight="300"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/login_attributes_color" />
+
+                    <TextView
+                        android:id="@+id/tvObtainedMarksSum"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/margin40"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textAllCaps="false"
+                        android:textFontWeight="300"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/login_attributes_color" />
+
+                    <TextView
+                        android:id="@+id/tvPercentage"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/margin40"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textAllCaps="false"
+                        android:textFontWeight="300"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/login_attributes_color" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
