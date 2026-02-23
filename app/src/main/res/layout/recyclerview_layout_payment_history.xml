@@ -7,9 +7,10 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/itemLayout"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:weightSum="2">
+            android:layout_height="50dp"
+            android:weightSum="3">
 
             <TextView
                 android:id="@+id/paymenthistorydate"
@@ -36,6 +37,22 @@
                 android:textFontWeight="300"
                 android:fontFamily="@font/montserrat"
                 android:textColor="@color/login_attributes_color" />
+
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/downloadReceipt"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <ImageView
+
+                    android:background="@drawable/file"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+
+            </LinearLayout>
 
         </LinearLayout>
         <View

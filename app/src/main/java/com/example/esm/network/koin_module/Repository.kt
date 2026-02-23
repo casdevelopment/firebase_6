@@ -13,6 +13,7 @@ import com.example.esm.login.models.LoginRequestResponseModel
 import com.example.esm.network.ApiInterface
 import com.example.esm.notice.models.NoticeModel
 import com.example.esm.notice.models.NoticeResponseListModel
+import com.example.esm.paymenthistory.models.PaymentHistoryPostModel
 import com.example.esm.policy.PolicyData
 import com.example.esm.report.ReportDataModel
 import com.example.esm.signup.model.SignUpRequestResponseModel
@@ -35,6 +36,10 @@ class Repository(private val apiInterface: ApiInterface) {
 
     suspend fun stdFeePaymentHistory(model: IdentityModel): Response<StudentResponseModel> {
         return apiInterface.stdFeePaymentHistory(model)
+
+    }
+    suspend fun downloadFeeReceipt(model: PaymentHistoryPostModel): Response<String> {
+        return apiInterface.downloadFeeReceipt(model)
 
     }
 

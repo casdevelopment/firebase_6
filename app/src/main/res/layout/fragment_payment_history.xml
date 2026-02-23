@@ -46,10 +46,11 @@
                     android:visibility="visible">
 
                     <LinearLayout
+                        android:id="@+id/headerTvLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:weightSum="3">
 
                         <TextView
                             android:layout_width="0dp"
@@ -78,6 +79,21 @@
                             android:fontFamily="@font/montserrat"
                             android:textColor="@color/colorPrimary" />
 
+                        <TextView
+                            android:id="@+id/feeReceiptTv"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/margin40"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@drawable/left_brder_with_top_radius"
+                            android:gravity="center"
+                            android:text="FeeReceipt"
+                            android:textSize="12sp"
+                            android:textAllCaps="false"
+                            android:textFontWeight="300"
+                            android:fontFamily="@font/montserrat"
+                            android:textColor="@color/textColor" />
+
                     </LinearLayout>
 
                     <View
@@ -89,13 +105,14 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/paymentHistoryRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:visibility="visible"
                         tools:listitem="@layout/recyclerview_layout_payment_history"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 </LinearLayout>
+
             </LinearLayout>
 
             <TextView

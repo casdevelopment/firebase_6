@@ -15,7 +15,9 @@ import com.example.esm.dashboardactivity.DashboardActivity
 import com.example.esm.databinding.FragmentPaymentHistoryBinding
 import com.example.esm.network.Status
 import com.example.esm.paymenthistory.adapters.PaymentHistoryAdapter
+import com.example.esm.paymenthistory.adapters.PaymentHistoryAdapter.OnPaymentClickListener
 import com.example.esm.paymenthistory.models.PaymentHistoryModel
+import com.example.esm.paymenthistory.models.PaymentHistoryPostModel
 import com.example.esm.paymenthistory.viewmodels.PaymentViewModel
 import com.example.esm.utils.AppConstants
 import com.example.esm.utils.AppUtils
@@ -27,12 +29,13 @@ import org.json.JSONObject
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PaymentHistoryFragment : Fragment() {
+class PaymentHistoryFragment : Fragment() , OnPaymentClickListener{
     lateinit var binding: FragmentPaymentHistoryBinding
 
     val sharedPrefsHelper: SharedPrefsHelper by inject()
     private val viewModel: PaymentViewModel by viewModel()
     private val countDecoration = 0
+
 
     var stdFeePaymentHistoryList: ArrayList<PaymentHistoryModel> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +58,15 @@ class PaymentHistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         (activity as DashboardActivity).backArrowVisible()
         (activity as DashboardActivity).drawIconInvisible()
+
+        if (!requireContext().packageName.equals("com.fssa.esm")) {
+            binding.headerTvLayout.weightSum = 2.0f
+            // 2. Hide the Fee Receipt column
+            binding.feeReceiptTv.visibility = View.GONE
+            // Optional: Ensure the layout refreshes
+            binding.headerTvLayout.requestLayout()
+
+        }
 
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
@@ -130,7 +142,7 @@ class PaymentHistoryFragment : Fragment() {
 
     private fun setRecyclerView(list: ArrayList<PaymentHistoryModel>) {
         if (!list.isEmpty()){
-            binding.paymentHistoryRecyclerView.adapter= PaymentHistoryAdapter(list)
+            binding.paymentHistoryRecyclerView.adapter= PaymentHistoryAdapter(list,this,requireContext())
             binding.history.visibility= View.VISIBLE
             binding.noItem.visibility= View.GONE
 
@@ -166,5 +178,63 @@ class PaymentHistoryFragment : Fragment() {
             e.printStackTrace()
         }
         return paymentList
+    }
+
+    override fun onDownloadReceiptClick(feeDepositId: String, ucSchoolid: String?) {
+
+        if(feeDepositId.isEmpty()){
+            Toast.makeText(requireContext(), "No receipt available", Toast.LENGTH_SHORT).show()
+        }else{
+            Log.v("onDownloadReceiptClick","FeeDepositId "+feeDepositId)
+            val paymentHistoryPostModel= PaymentHistoryPostModel()
+            paymentHistoryPostModel.UserIdentity = sharedPrefsHelper.getUserId()?.toString()
+            paymentHistoryPostModel.StudentId = AppConstants.STUDENT_ID.toString()
+            paymentHistoryPostModel.SchoolId = ucSchoolid
+            paymentHistoryPostModel.FeeDepositeId = feeDepositId
+            callDownloadReceiptApi(paymentHistoryPostModel)
+
+        }
+
+    }
+
+    private fun callDownloadReceiptApi(model: PaymentHistoryPostModel) {
+        viewModel.downloadFeeReceipt(model).observe(viewLifecycleOwner){ apiResponse->
+            when(apiResponse.status){
+                Status.LOADING->{
+                    AppUtils.startLoader(requireActivity())
+                    Log.d("response","loading")
+                }
+                Status.SUCCESS->{
+                    AppUtils.stopLoader()
+                    if (apiResponse.data!=null){
+                        if (apiResponse.data.isSuccessful){
+                            Log.d("response","is succesful")
+                            val response= apiResponse.data.body()
+                            if (response != null) {
+                                Log.v("onDownloadReceiptClick", "voucher url $response")
+                                AppUtils.goToLink(response,requireContext())
+                            }else{
+                                Toast.makeText(requireContext(), " api response is null", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        else{
+                            Log.d("response","not succesful")
+                            Toast.makeText(requireContext(), " not successful", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+
+
+                }
+                Status.ERROR->{
+                    AppUtils.stopLoader()
+                    Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT).show()
+                    Log.d("response","error:${apiResponse.message}")
+
+                }
+            }
+
+        }
+
     }
 }

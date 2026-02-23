@@ -10,6 +10,7 @@ import com.example.esm.eventcalendar.models.EventsResponseModel
 import com.example.esm.feecard.models.FeeCardMasterModel
 import com.example.esm.login.models.LoginRequestResponseModel
 import com.example.esm.notice.models.NoticeModel
+import com.example.esm.paymenthistory.models.PaymentHistoryPostModel
 import com.example.esm.policy.PolicyData
 import com.example.esm.report.ReportDataModel
 import com.example.esm.signup.model.SignUpRequestResponseModel
@@ -139,5 +140,7 @@ interface ApiInterface {
     @POST("DownloadOALevelTestReport_Mobile")
     suspend fun getOALevelReport(@Body fields: HashMap<String, Any>): Response<String>
 
+    @POST("DownloadFeeReceipt")
+    suspend fun downloadFeeReceipt(@Body model: PaymentHistoryPostModel): Response<String>
 
 }
