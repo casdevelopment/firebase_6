@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:1e092274ba9e686d67ed0e",
+        "android_client_info": {
+          "package_name": "com.edukala.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:632387047947:android:2b78a03b314ac15e67ed0e",
         "android_client_info": {
           "package_name": "com.fssa.esm"
@@ -29,6 +48,25 @@
         "mobilesdk_app_id": "1:632387047947:android:4cfaebdea7c624c967ed0e",
         "android_client_info": {
           "package_name": "com.kpsi.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:bc46d3e506f5413067ed0e",
+        "android_client_info": {
+          "package_name": "com.rha.esm"
         }
       },
       "oauth_client": [],

@@ -19,4 +19,6 @@ data class DiaryModel(
     val UserFileName: String? = null,
     val LogoMIMEType: String? = null,
     val LogoContent: String? = null,
+    val DateFromString: String? = null,
+
 )

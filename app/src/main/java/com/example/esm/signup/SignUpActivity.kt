@@ -95,6 +95,10 @@ class SignUpActivity : AppCompatActivity() {
            setContentView(R.layout.activity_sign_up_kpsi)
        }else if (packageName.equals("com.fssa.esm")) {
            setContentView(R.layout.activity_sign_up_fssa)
+       }else if (packageName.equals("com.rha.esm")) {
+           setContentView(R.layout.activity_sign_up_rha)
+       }else if (packageName.equals("com.edukala.esm")) {
+           setContentView(R.layout.activity_sign_up_edukala)
        }
     }
     private fun setMobileCode() {
@@ -148,6 +152,16 @@ class SignUpActivity : AppCompatActivity() {
                             R.drawable.outline_check_circle_white_18,
                             0
                         )
+                    }
+
+                    if (  packageName.equals("com.rha.esm") && phone.toString().length < 13){
+                        phoneNo.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.outline_cancel_black_18, 0)
+                        phoneNo.requestFocus()
+                        phoneNoError.visibility = View.VISIBLE
+
+
+                    }else{
+                        phoneNoError.visibility= View.GONE
                     }
                 }
                 else{

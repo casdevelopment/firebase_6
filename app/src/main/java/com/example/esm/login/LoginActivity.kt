@@ -91,6 +91,10 @@ class LoginActivity <T>: AppCompatActivity() {
           setContentView(R.layout.activity_login_kpsi)
       }else if (packageName.equals("com.fssa.esm")) {
           setContentView(R.layout.activity_login_fssa)
+      }else if (packageName.equals("com.rha.esm")) {
+          setContentView(R.layout.activity_login_rha)
+      }else if (packageName.equals("com.edukala.esm")) {
+          setContentView(R.layout.activity_login_edukala)
       }
 
 
@@ -132,11 +136,13 @@ class LoginActivity <T>: AppCompatActivity() {
                     else{
                         phoneNoError.visibility = View.VISIBLE
                     }
+
                     if (phone.toString().isEmpty() || phone.toString().length != 12){
                       phoneNo.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.outline_cancel_black_18, 0)
                         phoneNo.requestFocus()
 
                     }
+
                     else if (AppUtils.iszeroCheck(phone.toString())){
                         phoneNo.setCompoundDrawablesWithIntrinsicBounds(
                             0,
@@ -146,7 +152,11 @@ class LoginActivity <T>: AppCompatActivity() {
                         )
                         phoneNo.requestFocus()
                         phoneNoError.visibility = View.VISIBLE
-                        phoneNoError.setText("Please start phone number without zero")
+
+                        if (!packageName.equals("com.rha.esm")) {
+                            phoneNoError.setText("Please start phone number without zero")
+                        }
+
                     }
                     else{
                         phoneNoError.visibility= View.GONE
@@ -156,6 +166,17 @@ class LoginActivity <T>: AppCompatActivity() {
                             R.drawable.outline_check_circle_white_18,
                             0
                         )
+                    }
+
+                    Log.d("TextChanged","phone length" + phone.toString().length)
+                    if (  packageName.equals("com.rha.esm") && phone.toString().length < 13){
+                        phoneNo.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.outline_cancel_black_18, 0)
+                        phoneNo.requestFocus()
+                        phoneNoError.visibility = View.VISIBLE
+
+
+                    }else{
+                        phoneNoError.visibility= View.GONE
                     }
                 }
                 else{

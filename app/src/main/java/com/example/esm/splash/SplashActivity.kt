@@ -16,8 +16,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.esm.R
 import com.example.esm.databinding.ActivitySplashBassBinding
 import com.example.esm.databinding.ActivitySplashBinding
+import com.example.esm.databinding.ActivitySplashEdukalaBinding
 import com.example.esm.databinding.ActivitySplashFssaBinding
 import com.example.esm.databinding.ActivitySplashKpsiBinding
+import com.example.esm.databinding.ActivitySplashRhaBinding
 import com.example.esm.login.LoginActivity
 import com.example.esm.utils.AppConstants
 import com.example.esm.utils.SharedPrefsHelper
@@ -49,6 +51,8 @@ class SplashActivity : AppCompatActivity() {
     lateinit var bindingBass : ActivitySplashBassBinding
     lateinit var bindingKpsi : ActivitySplashKpsiBinding
     lateinit var bindingFssa: ActivitySplashFssaBinding
+    lateinit var bindingRha: ActivitySplashRhaBinding
+    lateinit var bindingEduKala: ActivitySplashEdukalaBinding
 
   //  var sisaDelay:Long=14000
 
@@ -63,6 +67,8 @@ class SplashActivity : AppCompatActivity() {
         bindingBass = ActivitySplashBassBinding.inflate(layoutInflater)
         bindingKpsi = ActivitySplashKpsiBinding.inflate(layoutInflater)
         bindingFssa = ActivitySplashFssaBinding.inflate(layoutInflater)
+        bindingRha = ActivitySplashRhaBinding.inflate(layoutInflater)
+        bindingEduKala = ActivitySplashEdukalaBinding.inflate(layoutInflater)
 
 
 
@@ -84,7 +90,13 @@ class SplashActivity : AppCompatActivity() {
         }
        else if (packageName.equals("com.fssa.esm")) {
             setContentView(bindingFssa.root)
-        }
+        }else if (packageName.equals("com.rha.esm")) {
+           setContentView(bindingRha.root)
+       }else if (packageName.equals("com.edukala.esm")) {
+           setContentView(bindingEduKala.root)
+       }
+
+
     }
 
     private fun setAppColors(primaryColor: Int, primaryDarkColor: Int, accentColor: Int) {

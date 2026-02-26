@@ -213,6 +213,12 @@ class WelcomeActivity : AppCompatActivity(), WelcomeAdapter.onItemClickListener 
         }else  if (packageName.equals("com.kpsi.esm")){
             val studentList = parseJson(AppConstants.DummyJsonResponseKPSI)
             setRecyclerView(studentList)
+        }else  if (packageName.equals("com.rha.esm")){
+            val studentList = parseJson(AppConstants.DummyJsonResponseRha)
+            setRecyclerView(studentList)
+        }else  if (packageName.equals("com.edukala.esm")){
+            val studentList = parseJson(AppConstants.DummyJsonResponseEduKala)
+            setRecyclerView(studentList)
         }
     }
 
