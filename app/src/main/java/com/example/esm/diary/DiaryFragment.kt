@@ -15,7 +15,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
@@ -232,7 +231,7 @@ class DiaryFragment : Fragment(), DiaryAdapter.onDownloadClickListener {
 
     private fun setRecyclerView(list: ArrayList<DiaryModel>) {
         if (!list.isEmpty()) {
-            binding.diaryRecyclerView.adapter = DiaryAdapter(list, this)
+            binding.diaryRecyclerView.adapter = DiaryAdapter(list, this,requireContext())
             binding.diaryRecyclerView.visibility = View.VISIBLE
             binding.noItem.visibility = View.GONE
 

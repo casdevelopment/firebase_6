@@ -1,9 +1,10 @@
 package com.example.esm.diary.adapters
 
-import android.R.id.input
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,11 @@ import com.example.esm.databinding.RecyclerviewLayoutDiariesLayoutBinding
 import com.example.esm.diary.models.DiaryModel
 
 
-class DiaryAdapter( val stdDiaryList: ArrayList<DiaryModel> , val mListener: onDownloadClickListener) : RecyclerView.Adapter<DiaryAdapter.DiaryViewHolder>() {
+class DiaryAdapter(
+    val stdDiaryList: ArrayList<DiaryModel>,
+    val mListener: onDownloadClickListener,
+    val requireContext: Context
+) : RecyclerView.Adapter<DiaryAdapter.DiaryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
         val binding: RecyclerviewLayoutDiariesLayoutBinding = DataBindingUtil.inflate(
@@ -71,6 +76,9 @@ class DiaryAdapter( val stdDiaryList: ArrayList<DiaryModel> , val mListener: onD
         holder.binding.download.setOnClickListener {
             mListener.onItemClick(position,stdDiaryList[position])
 
+        }
+        if (requireContext.packageName.equals("com.rha.esm")) {
+            holder.binding.s.visibility=GONE
         }
 
     }

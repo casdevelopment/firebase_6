@@ -92,11 +92,11 @@ android {
         create("RockhillAcademy") {
             applicationId = "com.rha.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "Rockhill Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
-            resValue("string", "mobile_code", "345")
+            resValue("string", "mobile_code", "320")
             manifestPlaceholders["authorities"] = "$applicationId.provide"
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_rha"
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_rha"
