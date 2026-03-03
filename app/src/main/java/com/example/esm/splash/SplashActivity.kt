@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.esm.R
 import com.example.esm.databinding.ActivitySplashBassBinding
 import com.example.esm.databinding.ActivitySplashBinding
+import com.example.esm.databinding.ActivitySplashCgssBinding
 import com.example.esm.databinding.ActivitySplashEdukalaBinding
 import com.example.esm.databinding.ActivitySplashFssaBinding
 import com.example.esm.databinding.ActivitySplashKpsiBinding
@@ -53,6 +54,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var bindingFssa: ActivitySplashFssaBinding
     lateinit var bindingRha: ActivitySplashRhaBinding
     lateinit var bindingEduKala: ActivitySplashEdukalaBinding
+    lateinit var bindingCgss: ActivitySplashCgssBinding
 
   //  var sisaDelay:Long=14000
 
@@ -69,6 +71,7 @@ class SplashActivity : AppCompatActivity() {
         bindingFssa = ActivitySplashFssaBinding.inflate(layoutInflater)
         bindingRha = ActivitySplashRhaBinding.inflate(layoutInflater)
         bindingEduKala = ActivitySplashEdukalaBinding.inflate(layoutInflater)
+        bindingCgss = ActivitySplashCgssBinding.inflate(layoutInflater)
 
 
 
@@ -94,6 +97,8 @@ class SplashActivity : AppCompatActivity() {
            setContentView(bindingRha.root)
        }else if (packageName.equals("com.edukala.esm")) {
            setContentView(bindingEduKala.root)
+       }else if (packageName.equals("com.cgss.esm")) {
+           setContentView(bindingCgss.root)
        }
 
 

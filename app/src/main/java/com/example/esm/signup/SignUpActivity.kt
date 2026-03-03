@@ -81,10 +81,10 @@ class SignUpActivity : AppCompatActivity() {
         supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, primaryColor)))
 
         proceedButton.setBackgroundColor(ContextCompat.getColor(this, primaryColor))
-        phoneNoError.setTextColor(ContextCompat.getColor(this, accentColor))
+      //  phoneNoError.setTextColor(ContextCompat.getColor(this, accentColor))
         entityCodeError.setTextColor(ContextCompat.getColor(this, accentColor))
-        passwordError.setTextColor(ContextCompat.getColor(this, accentColor))
-        confirmPasswordError.setTextColor(ContextCompat.getColor(this, accentColor))
+    //    passwordError.setTextColor(ContextCompat.getColor(this, accentColor))
+      //  confirmPasswordError.setTextColor(ContextCompat.getColor(this, accentColor))
 
     }
 
@@ -99,6 +99,8 @@ class SignUpActivity : AppCompatActivity() {
            setContentView(R.layout.activity_sign_up_rha)
        }else if (packageName.equals("com.edukala.esm")) {
            setContentView(R.layout.activity_sign_up_edukala)
+       }else if (packageName.equals("com.cgss.esm")) {
+           setContentView(R.layout.activity_sign_up_cgss)
        }
     }
     private fun setMobileCode() {

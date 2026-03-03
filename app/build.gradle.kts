@@ -36,6 +36,12 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("CitiGrammarSchoolSialkot") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\cgss\\cgss.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -113,6 +119,18 @@ android {
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_edukala"
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_edukala"
         }
+        create("CitiGrammarSchoolSialkot") {
+            applicationId = "com.cgss.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "CGS Sialkot")
+            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "mobile_code", "347")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_cgss"
+            manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_cgss"
+        }
 
     }
 
@@ -128,6 +146,7 @@ android {
             signingConfig = signingConfigs.getByName("FourStarsSchoolAcademy")
             signingConfig = signingConfigs.getByName("RockhillAcademy")
             signingConfig = signingConfigs.getByName("EduactorsKalaske")
+            signingConfig = signingConfigs.getByName("CitiGrammarSchoolSialkot")
 
 
             proguardFiles(
