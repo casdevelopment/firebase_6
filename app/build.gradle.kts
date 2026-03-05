@@ -42,6 +42,12 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("SunAcademy") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\sun\\sun.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -131,6 +137,18 @@ android {
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_cgss"
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_cgss"
         }
+        create("SunAcademy") {
+            applicationId = "com.sunacademy.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "Sun Academy")
+            resValue("string", "base_url", "https://portal.sunacademy.com.pk/api/api/Mobile/")
+            resValue("string", "mobile_code", "343")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_sun"
+            manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_sun"
+        }
 
     }
 
@@ -147,6 +165,7 @@ android {
             signingConfig = signingConfigs.getByName("RockhillAcademy")
             signingConfig = signingConfigs.getByName("EduactorsKalaske")
             signingConfig = signingConfigs.getByName("CitiGrammarSchoolSialkot")
+            signingConfig = signingConfigs.getByName("SunAcademy")
 
 
             proguardFiles(

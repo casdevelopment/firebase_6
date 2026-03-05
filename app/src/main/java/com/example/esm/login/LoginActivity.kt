@@ -97,6 +97,8 @@ class LoginActivity <T>: AppCompatActivity() {
           setContentView(R.layout.activity_login_edukala)
       }else if (packageName.equals("com.cgss.esm")) {
           setContentView(R.layout.activity_login_cgss)
+      }else if (packageName.equals("com.sunacademy.esm")) {
+          setContentView(R.layout.activity_login_sun)
       }
 
 

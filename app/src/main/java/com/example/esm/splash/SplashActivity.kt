@@ -21,6 +21,7 @@ import com.example.esm.databinding.ActivitySplashEdukalaBinding
 import com.example.esm.databinding.ActivitySplashFssaBinding
 import com.example.esm.databinding.ActivitySplashKpsiBinding
 import com.example.esm.databinding.ActivitySplashRhaBinding
+import com.example.esm.databinding.ActivitySplashSunBinding
 import com.example.esm.login.LoginActivity
 import com.example.esm.utils.AppConstants
 import com.example.esm.utils.SharedPrefsHelper
@@ -55,6 +56,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var bindingRha: ActivitySplashRhaBinding
     lateinit var bindingEduKala: ActivitySplashEdukalaBinding
     lateinit var bindingCgss: ActivitySplashCgssBinding
+    lateinit var bindingSun: ActivitySplashSunBinding
 
   //  var sisaDelay:Long=14000
 
@@ -72,6 +74,7 @@ class SplashActivity : AppCompatActivity() {
         bindingRha = ActivitySplashRhaBinding.inflate(layoutInflater)
         bindingEduKala = ActivitySplashEdukalaBinding.inflate(layoutInflater)
         bindingCgss = ActivitySplashCgssBinding.inflate(layoutInflater)
+        bindingSun = ActivitySplashSunBinding.inflate(layoutInflater)
 
 
 
@@ -99,6 +102,8 @@ class SplashActivity : AppCompatActivity() {
            setContentView(bindingEduKala.root)
        }else if (packageName.equals("com.cgss.esm")) {
            setContentView(bindingCgss.root)
+       }else if (packageName.equals("com.sunacademy.esm")) {
+           setContentView(bindingSun.root)
        }
 
 
