@@ -48,18 +48,24 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("GEIs") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\GEIs\\GEIs.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
 
 
     namespace = "com.example.esm"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         //       applicationId = "com.cyberisol.esm"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
 //        versionCode = 1
 //        versionName = "1.0"
 
@@ -104,8 +110,8 @@ android {
         create("RockhillAcademy") {
             applicationId = "com.rha.esm"
             dimension = "esm"
-            versionCode = 2
-            versionName = "0.2"
+            versionCode = 3
+            versionName = "0.3"
             resValue("string", "app_name", "Rockhill Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "320")
@@ -149,6 +155,18 @@ android {
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_sun"
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_sun"
         }
+        create("GEIs") {
+            applicationId = "com.geis.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "GEIs")
+            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "mobile_code", "346")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_geis"
+            manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_geis"
+        }
 
     }
 
@@ -166,6 +184,7 @@ android {
             signingConfig = signingConfigs.getByName("EduactorsKalaske")
             signingConfig = signingConfigs.getByName("CitiGrammarSchoolSialkot")
             signingConfig = signingConfigs.getByName("SunAcademy")
+            signingConfig = signingConfigs.getByName("GEIs")
 
 
             proguardFiles(

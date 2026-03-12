@@ -32,11 +32,11 @@
     <color name="end_color_item">#2e365b</color>-->
 
     <!--rha-->
-    <!--<color name="colorPrimary">#261d48</color>
+    <color name="colorPrimary">#261d48</color>
     <color name="colorPrimaryDark">#4d456a</color>
     <color name="colorAccent">#E43B3C</color>
     <color name="start_color_item">#261d48</color>
-    <color name="end_color_item">#4d456a</color>-->
+    <color name="end_color_item">#4d456a</color>
 
     <!--cgss-->
     <!--<color name="colorPrimary">#b18a47</color>
@@ -46,11 +46,11 @@
     <color name="end_color_item">#002579</color>   -->
 
     <!--sun academy-->
-    <color name="colorPrimary">#1239e0</color>
+   <!-- <color name="colorPrimary">#1239e0</color>
     <color name="colorPrimaryDark">#0F30BF</color>
     <color name="colorAccent">#eedd51</color>
     <color name="start_color_item">#1239e0</color>
-    <color name="end_color_item">#0F30BF</color>
+    <color name="end_color_item">#0F30BF</color>-->
 
 
     <!--edukala-->
@@ -60,7 +60,12 @@
     <color name="start_color_item">#00a68e</color>
     <color name="end_color_item">#0065b0</color>-->
 
-
+    <!--geis-->
+  <!--  <color name="colorPrimary">#167cc1</color>
+    <color name="colorPrimaryDark">#116BA8</color>
+    <color name="colorAccent">#eedd51</color>
+    <color name="start_color_item">#167cc1</color>
+    <color name="end_color_item">#116BA8</color>-->
 
 
 

@@ -103,6 +103,8 @@ class SignUpActivity : AppCompatActivity() {
            setContentView(R.layout.activity_sign_up_cgss)
        }else if (packageName.equals("com.sunacademy.esm")) {
            setContentView(R.layout.activity_sign_up_sun)
+       }else if (packageName.equals("com.geis.esm")) {
+           setContentView(R.layout.activity_sign_up_geis)
        }
     }
     private fun setMobileCode() {

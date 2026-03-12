@@ -252,6 +252,20 @@ open class DashboardActivity : AppCompatActivity() {
             binding.twitter.visibility = View.GONE
             binding.linkdin.visibility = View.GONE
         }
+
+        if (packageName.equals("com.rha.esm")) {
+                binding.alertSmsMenu.visibility = View.GONE
+                binding.complaintMenu.visibility = View.GONE
+                binding.resultMenu.visibility = View.GONE
+                binding.notificationsMenu.visibility = View.GONE
+                binding.eventsMenu.visibility = View.GONE
+                binding.updatePassword.visibility = View.GONE
+                binding.feecardMenu.visibility = View.GONE
+                binding.attendanceMenu.visibility = View.GONE
+                binding.paymentHistoryMenu.visibility = View.GONE
+
+
+        }
         fireBaseNotificationData()
         hideLayout()
     }

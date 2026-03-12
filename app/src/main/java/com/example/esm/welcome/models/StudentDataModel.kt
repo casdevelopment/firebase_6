@@ -36,6 +36,8 @@ data class StudentDataModel(
 
     var Youtube:String?= null,
 
-    var Websiteurl:String?= null
+    var Websiteurl:String?= null,
+
+    var RelationIdFk:Int= 0
 
 ):Parcelable

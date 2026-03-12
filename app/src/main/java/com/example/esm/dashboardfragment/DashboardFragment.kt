@@ -108,7 +108,9 @@ open class DashboardFragment : Fragment() {
     ): View? {
         return if (requireContext().packageName.equals("com.fssa.esm")){
             inflater.inflate(R.layout.fragment_dashboard_fssa, container, false)
-        } else {
+        } else if(requireContext().packageName.equals("com.rha.esm")) {
+            inflater.inflate(R.layout.fragment_dashboardrha, container, false)}
+        else {
             inflater.inflate(R.layout.fragment_dashboard, container, false)
         }
 
@@ -153,6 +155,15 @@ open class DashboardFragment : Fragment() {
              downLoadVoucherLayout.visibility = View.GONE
              llHostel.visibility = View.GONE
              row5.visibility = View.GONE
+
+        }
+        if (requireContext().packageName.equals("com.rha.esm") && AppConstants.STUDENT_RelationIdFk==3) {
+
+
+             row1.visibility = View.GONE
+             row2.visibility = View.GONE
+             row3.visibility = View.GONE
+             row4.visibility = View.GONE
 
         }
 

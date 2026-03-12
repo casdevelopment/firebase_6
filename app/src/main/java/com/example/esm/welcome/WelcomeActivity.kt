@@ -187,6 +187,7 @@ class WelcomeActivity : AppCompatActivity(), WelcomeAdapter.onItemClickListener 
         AppConstants.SCHOOL_NAME = studentDataModel.SchoolName.toString()
         AppConstants.STUDENT_ID = studentDataModel.StudentId ?: 0
         AppConstants.STUDENT_SCHOOL_LOGO = studentDataModel.SchoolLogoString.toString()
+        AppConstants.STUDENT_RelationIdFk = studentDataModel.RelationIdFk
         // AppConstants.STUDENT_PICTURE_STRING = studentDataModel.StudentPictureString.toString()
         /// studentDataModel.StudentPictureString?.let { sharedPrefsHelper.setStudentPictureString(it) }
         Log.d("studentModel", "student data: $studentDataModel")
@@ -224,6 +225,9 @@ class WelcomeActivity : AppCompatActivity(), WelcomeAdapter.onItemClickListener 
             setRecyclerView(studentList)
         }else  if (packageName.equals("com.sunacademy.esm")){
             val studentList = parseJson(AppConstants.DummyJsonResponseSun)
+            setRecyclerView(studentList)
+        }else  if (packageName.equals("com.geis.esm")){
+            val studentList = parseJson(AppConstants.DummyJsonResponseGeis)
             setRecyclerView(studentList)
         }
     }
