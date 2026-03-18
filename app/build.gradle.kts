@@ -161,7 +161,7 @@ android {
             versionCode = 1
             versionName = "0.1"
             resValue("string", "app_name", "GEIs")
-            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "base_url", "https://coastguards.cyberasol.com/api/api/Mobile/")
             resValue("string", "mobile_code", "346")
             manifestPlaceholders["authorities"] = "$applicationId.provide"
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_geis"
