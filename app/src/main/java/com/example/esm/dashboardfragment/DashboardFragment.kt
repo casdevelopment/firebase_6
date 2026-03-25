@@ -109,7 +109,10 @@ open class DashboardFragment : Fragment() {
         return if (requireContext().packageName.equals("com.fssa.esm")){
             inflater.inflate(R.layout.fragment_dashboard_fssa, container, false)
         } else if(requireContext().packageName.equals("com.rha.esm")) {
-            inflater.inflate(R.layout.fragment_dashboardrha, container, false)}
+            inflater.inflate(R.layout.fragment_dashboardrha, container, false)
+        } else if(requireContext().packageName.equals("com.geis.esm")) {
+            inflater.inflate(R.layout.fragment_dashboardgeis, container, false)
+        }
         else {
             inflater.inflate(R.layout.fragment_dashboard, container, false)
         }
