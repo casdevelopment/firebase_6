@@ -81,6 +81,7 @@ open class FirebaseMessaging : FirebaseMessagingService() {
             notificationManager.createNotificationChannel(mChannel)
         }
         val mBuilder: NotificationCompat.Builder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.alert)
             .setContentTitle(title)
             .setContentText(Message) // .setLargeIcon(icon)
             .setAutoCancel(true)
