@@ -7,6 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class NoticeModel(
     val NotificationText: String,
     val NotificationTitle: String,
+    val CreatedDate: String,
     @SerializedName("Files")
     val NoticeFiles: ArrayList<NoticeFilesModel>
 

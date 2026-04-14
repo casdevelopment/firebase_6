@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.esm.R
 import com.example.esm.databinding.RecyclerviewNoticeLayoutBinding
 import com.example.esm.notice.models.NoticeModel
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class RecyclerViewAdapter( val noticeList: ArrayList<NoticeModel>, var mListener: onNoticeClickListener) :RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>() {
 
@@ -26,8 +28,31 @@ class RecyclerViewAdapter( val noticeList: ArrayList<NoticeModel>, var mListener
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder.binding.notificationTitle.text = noticeList[position].NotificationTitle
-        holder.binding.notificationText.text = noticeList[position].NotificationText
+
+        val item = noticeList[position]
+        holder.binding.notificationTitle.text = item.NotificationTitle
+        holder.binding.notificationText.text = item.NotificationText
+
+        val inputFormat = SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss.SSS",
+            Locale.getDefault()
+        )
+
+        val dateObj = try {
+            item.CreatedDate?.let { inputFormat.parse(it) }
+        } catch (e: Exception) {
+            null
+        }
+
+        val dateFormat = SimpleDateFormat("d MMMM yyyy", Locale.getDefault())
+        val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+
+        holder.binding.notificationDate.text =
+            dateObj?.let { dateFormat.format(it) } ?: ""
+
+        holder.binding.notificationTime.text =
+            dateObj?.let { timeFormat.format(it) } ?: ""
+
         holder.binding.viewNotification.setOnClickListener {
             mListener.onItemClick(noticeList[position],position)
 
