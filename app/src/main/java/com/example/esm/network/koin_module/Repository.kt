@@ -7,6 +7,7 @@ import com.example.esm.complaint.models.ComplaintResponseList
 import com.example.esm.complaint.models.ComplaintResponseModel
 import com.example.esm.dashboardfragment.models.DashboardFragmentModel
 import com.example.esm.diary.models.DiaryResponseModel
+import com.example.esm.diary.models.StudentDiaryRequestModel
 import com.example.esm.eventcalendar.models.EventsResponseModel
 import com.example.esm.feecard.models.FeeCardMasterModel
 import com.example.esm.login.models.LoginRequestResponseModel
@@ -20,6 +21,8 @@ import com.example.esm.signup.model.SignUpRequestResponseModel
 import com.example.esm.studenttimetable.models.TimeTableModel
 import com.example.esm.welcome.models.IdentityModel
 import com.example.esm.welcome.models.StudentResponseModel
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Response
 @Keep
@@ -91,8 +94,8 @@ class Repository(private val apiInterface: ApiInterface) {
 
     }
 
-    suspend fun complaintRegistration(model: ComplaintModel): Response<ComplaintModel> {
-        return apiInterface.complaintRegistration(model)
+    suspend fun complaintRegistration(model: RequestBody, file: MultipartBody.Part?): Response<ComplaintModel> {
+        return apiInterface.complaintRegistration(model,file)
 
     }
 
@@ -117,6 +120,11 @@ class Repository(private val apiInterface: ApiInterface) {
 
      suspend fun getStudentDiary(model: IdentityModel): Response<DiaryResponseModel> {
          return apiInterface.getStudentDiary(model)
+
+    }
+
+    suspend fun getDiaryById(request : StudentDiaryRequestModel): Response<DiaryResponseModel> {
+        return apiInterface.getDiaryById(request)
 
     }
 

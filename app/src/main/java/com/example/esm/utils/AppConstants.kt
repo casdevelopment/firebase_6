@@ -34,6 +34,7 @@ object AppConstants {
     const val DOWNLOAD_VOUCHER = "DowloadVocher"
 
     const val STUDENT_DIARY = "MobileGetStudentDiary"
+    const val STUDENT_DIARY_BY_ID = "GetStudentDiaryById"
     const val STUDENT_NOTIFICATION = "MobileGetStudentNotification"
     const val STUDENT_CALENDAR = "MobileGetStudentCalender"
     var STUDENT_NAME = ""

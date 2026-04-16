@@ -13,6 +13,10 @@ data class ComplaintModel(
 
     var UserIdentity: String?= null,
 
-    var StudentId: String?= null
+    var StudentId: String?= null,
+
+    var UserFileName: String?= null,
+    var SystemFileName: String?= null,
+    var FileDownloadLink: String?= null
 )
 

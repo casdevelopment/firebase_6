@@ -37,6 +37,7 @@
     <color name="colorAccent">#E43B3C</color>
     <color name="start_color_item">#261d48</color>
     <color name="end_color_item">#4d456a</color>
+    <color name="view_button_file">#DAD6EB</color>
 
     <!--cgss-->
     <!--<color name="colorPrimary">#b18a47</color>

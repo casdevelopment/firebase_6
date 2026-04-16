@@ -1,11 +1,13 @@
 package com.example.esm.complaint
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -20,8 +22,14 @@ import com.example.esm.network.Status
 import com.example.esm.utils.AppConstants
 import com.example.esm.utils.AppUtils
 import com.example.esm.utils.SharedPrefsHelper
+import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 
 
 class NewComplaintFragment : Fragment() {
@@ -29,6 +37,29 @@ class NewComplaintFragment : Fragment() {
     val sharedPrefsHelper: SharedPrefsHelper by inject()
     private val viewModel: ComplaintViewModel by viewModel()
     private val activity: DashboardActivity? = null
+
+    private var selectedFileUri: Uri? = null
+
+    // 📂 File Picker (Image + PDF)
+    private val filePickerLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            uri?.let {
+
+                if (isValidFile(it)) {
+
+                    selectedFileUri = it
+
+                    // ✅ UPDATE TEXT VIEW HERE
+                    binding.fileName.text = getFileName(it)
+
+                    Toast.makeText(requireContext(), "File selected", Toast.LENGTH_SHORT).show()
+
+                } else {
+                    Toast.makeText(requireContext(), "Only Image or PDF allowed", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,16 +82,26 @@ class NewComplaintFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.attachFile.setOnClickListener {
+            filePickerLauncher.launch("*/*")
+        }
+
+
         binding.submitComplaint.setOnClickListener {
             if (validation()){
-                val complaintModel= ComplaintModel()
-                complaintModel.ComplaintId = 0
-                complaintModel.ComplaintText = binding.complaintText.text.toString()
-                complaintModel.ComplaintTitle = binding.titleComplaint.text.toString()
-                complaintModel.Logged = 0
-                complaintModel.UserIdentity = sharedPrefsHelper.getUserId().toString()
-                complaintModel.StudentId = AppConstants.STUDENT_ID.toString()
-                callComplaintRegistrationApi(complaintModel)
+//                val complaintModel= ComplaintModel()
+//
+//                complaintModel.UserIdentity = sharedPrefsHelper.getUserId().toString()
+//                complaintModel.ComplaintTitle = binding.titleComplaint.text.toString()
+//                complaintModel.ComplaintText = binding.complaintText.text.toString()
+//                complaintModel.StudentId = AppConstants.STUDENT_ID.toString()
+
+//                complaintModel.ComplaintId = 0
+//                complaintModel.Logged = 0
+
+
+                callComplaintRegistrationApi()
 
             }
 
@@ -70,27 +111,94 @@ class NewComplaintFragment : Fragment() {
 
 
     private fun validation(): Boolean {
-        if (binding.titleComplaint.text.toString().isEmpty()){
+
+        if (binding.titleComplaint.text.toString().isEmpty()) {
             binding.titleError.visibility = View.VISIBLE
-            binding.titleError.setText("Please enter title for complaint")
+            binding.titleError.text = "Please enter title for complaint"
             return false
         }
-        else if (binding.complaintText.text.isEmpty()){
-            binding.complaintError.visibility= View.VISIBLE
-            binding.complaintError.setText("Please enter complaint details")
+
+        else if (binding.complaintText.text.isEmpty()) {
+            binding.complaintError.visibility = View.VISIBLE
+            binding.complaintError.text = "Please enter complaint details"
             return false
         }
+
+        else if (selectedFileUri == null) {
+            Toast.makeText(requireContext(), "Please attach a file", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
         else {
-            binding.titleError.visibility= View.GONE
-            binding.complaintError.visibility= View.GONE
+            binding.titleError.visibility = View.GONE
+            binding.complaintError.visibility = View.GONE
             return true
         }
+    }
+
+    private fun isValidFile(uri: Uri): Boolean {
+        val type = requireContext().contentResolver.getType(uri)
+        return type == "application/pdf" || type?.startsWith("image/") == true
+    }
+
+    // ✅ Convert URI → File
+    private fun uriToFile(uri: Uri): File {
+        val file = File(requireContext().cacheDir, "upload_${System.currentTimeMillis()}")
+        val inputStream = requireContext().contentResolver.openInputStream(uri)
+        val outputStream = file.outputStream()
+
+        inputStream?.copyTo(outputStream)
+
+        inputStream?.close()
+        outputStream.close()
+
+        return file
+    }
 
 
-}
 
-    private fun callComplaintRegistrationApi(model: ComplaintModel) {
-        viewModel.complaintRegistration(model).observe(viewLifecycleOwner){ apiResponse->
+    private fun callComplaintRegistrationApi() {
+
+        val complaintModel = ComplaintModel().apply {
+
+            UserIdentity = sharedPrefsHelper.getUserId().toString()
+            ComplaintTitle = binding.titleComplaint.text.toString()
+            ComplaintText = binding.complaintText.text.toString()
+            StudentId = AppConstants.STUDENT_ID.toString()
+
+//            ComplaintId = 0
+//            Logged = 0
+//
+
+        }
+
+
+
+
+        // 2️⃣ Convert model → JSON → RequestBody
+        val json = Gson().toJson(complaintModel)
+        val modelBody = json.toRequestBody("application/json".toMediaTypeOrNull())
+
+        // 3️⃣ Prepare file (optional)
+        var filePart: MultipartBody.Part? = null
+
+        selectedFileUri?.let { uri ->
+            val file = uriToFile(uri)
+            val mimeType = requireContext().contentResolver.getType(uri)
+                ?: "application/octet-stream"
+
+            val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
+
+            filePart = MultipartBody.Part.createFormData(
+                "ComplaintAttachment",
+                file.name,
+                requestFile
+            )
+        }
+
+
+
+        viewModel.complaintRegistration(modelBody, filePart).observe(viewLifecycleOwner){ apiResponse->
             when(apiResponse.status){
                 Status.LOADING->{
                     AppUtils.startLoader(requireActivity())
@@ -122,6 +230,21 @@ class NewComplaintFragment : Fragment() {
         }
 
 
+    }
+
+    private fun getFileName(uri: Uri): String {
+        var name = "Selected File"
+
+        val cursor = requireContext().contentResolver.query(uri, null, null, null, null)
+
+        cursor?.use {
+            val index = it.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME)
+            if (it.moveToFirst() && index >= 0) {
+                name = it.getString(index)
+            }
+        }
+
+        return name
     }
 
 
