@@ -6,6 +6,7 @@ import com.example.esm.complaint.models.ComplaintResponseList
 import com.example.esm.complaint.models.ComplaintResponseModel
 import com.example.esm.dashboardfragment.models.DashboardFragmentModel
 import com.example.esm.diary.models.DiaryResponseModel
+import com.example.esm.diary.models.StudentDiaryRequestModel
 import com.example.esm.eventcalendar.models.EventsResponseModel
 import com.example.esm.feecard.models.FeeCardMasterModel
 import com.example.esm.login.models.LoginRequestResponseModel
@@ -17,11 +18,15 @@ import com.example.esm.signup.model.SignUpRequestResponseModel
 import com.example.esm.utils.AppConstants
 import com.example.esm.welcome.models.IdentityModel
 import com.example.esm.welcome.models.StudentResponseModel
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 @Keep
 interface ApiInterface {
@@ -67,8 +72,13 @@ interface ApiInterface {
     @POST(AppConstants.STD_COMPLAINT_LIST)
     suspend fun stdComplaintList(@Body model: IdentityModel): Response<StudentResponseModel>
 
+    @Multipart
     @POST(AppConstants.STD_COMPLAINT_REGISTRATION)
-    suspend fun complaintRegistration(@Body model: ComplaintModel): Response<ComplaintModel>
+    suspend fun complaintRegistration(
+        @Part("Model") model: RequestBody,
+        @Part complainAttachment: MultipartBody.Part?
+    ): Response<ComplaintModel>
+
 
     @POST(AppConstants.STD_COMPLAINT_Response_List)
     suspend fun complaintChatResponseList(@Body model: ComplaintResponseList): Response<ComplaintResponseList>
@@ -83,6 +93,9 @@ interface ApiInterface {
 
     @POST(AppConstants.STUDENT_DIARY)
     suspend fun getStudentDiary(@Body model: IdentityModel): Response<DiaryResponseModel>
+
+    @POST(AppConstants.STUDENT_DIARY_BY_ID)
+    suspend fun getDiaryById(@Body request : StudentDiaryRequestModel): Response<DiaryResponseModel>
 
     @POST(AppConstants.STUDENT_NOTIFICATION)
     suspend fun studentNoticeApi(@Body model: IdentityModel): Response<List<NoticeModel>>

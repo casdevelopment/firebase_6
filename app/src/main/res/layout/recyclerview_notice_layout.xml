@@ -50,6 +50,35 @@
                     tools:text="SubHeading"
                     android:textColor="@color/login_attributes_color" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    >
+
+                <TextView
+
+                    android:id="@+id/notificationDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="SubHeading"
+                    android:textColor="@color/login_attributes_color" />
+
+                    <TextView
+                        android:id="@+id/notificationTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/montserrat_regular"
+                        tools:text="SubHeading"
+                        android:textColor="@color/login_attributes_color" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <RelativeLayout

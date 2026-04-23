@@ -51,6 +51,11 @@ class DiaryAdapter(
             Log.d("string","split string is : $first_char")
 
 
+        holder.itemView.setOnClickListener {
+            mListener.onDiaryClick(stdDiaryList[position])
+        }
+
+
           //  val char= str?.chars()
 
 //        if (str != null) {
@@ -89,8 +94,11 @@ class DiaryAdapter(
 
     class DiaryViewHolder( val binding: RecyclerviewLayoutDiariesLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
+
+
     interface onDownloadClickListener{
         fun onItemClick(position: Int, diaryModel: DiaryModel)
+        fun onDiaryClick(diaryModel: DiaryModel)
 
     }
 

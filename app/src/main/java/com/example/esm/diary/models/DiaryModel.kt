@@ -3,6 +3,9 @@ package com.example.esm.diary.models
 import com.google.gson.annotations.SerializedName
 
 data class DiaryModel(
+
+    val DiaryId: Int? = null,
+
     @SerializedName("SubjectIdFk")
     val SubjectId: Int? = null,
 
@@ -21,4 +24,13 @@ data class DiaryModel(
     val LogoContent: String? = null,
     val DateFromString: String? = null,
 
+)
+
+data class StudentDiaryRequestModel(
+
+    val UserIdentity: String,
+
+    val StudentId: Int,
+
+    val DiaryId: Int
 )

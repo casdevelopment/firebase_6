@@ -40,34 +40,113 @@ class ComplaintAdapter( val complaintList: ArrayList<ComplaintModel>,
         return complaintList.size
     }
 
+//    override fun onBindViewHolder(holder: ComplaintViewHolder, position: Int) {
+//        holder.binding.attendanceDate.text = "#"+ " " + complaintList[position].ComplaintId.toString()
+//        holder.binding.complaintTitle.text = complaintList[position].ComplaintTitle
+//        holder.binding.complaintStatus.text = complaintList[position].ComplaintText
+//        val fileLink = complaintList[position].FileDownloadLink
+//        val fileName = complaintList[position].UserFileName
+//
+//
+//        holder.binding.viewComplaint.setOnClickListener {
+//            val dialogBinding = DialogComplaintDetailsBinding.inflate(LayoutInflater.from(mCtx))
+//            val dialogBuilder = AlertDialog.Builder(mCtx)
+//                .setView(dialogBinding.root)
+//                .create()
+//            dialogBinding.titleComplaint.setText( complaintList[position].ComplaintTitle)
+//            dialogBinding.complaintText.setText(complaintList[position].ComplaintText)
+//            dialogBinding.submitComplaint.setOnClickListener {
+//                dialogBuilder.dismiss()
+//            }
+//            dialogBuilder.show()
+//        }
+//
+//        holder.binding.viewResponse.setOnClickListener(View.OnClickListener {
+//            val complaintId = complaintList[position].ComplaintId ?: return@OnClickListener
+//            val userId = AppConstants.USER_IDENTITY
+//         //   val userId = complaintList[position].UserIdentity ?: return@OnClickListener
+//
+//            if (mCtx is FragmentActivity) {
+//                val navController = (mCtx as FragmentActivity).findNavController(R.id.nav_host_fragment)
+//                navController.navigate(ComplaintFragmentDirections.actionComplaintFragmentToResponseChatFragment(complaintId,userId))
+//            }
+//        })
+//
+//    }
+
+
     override fun onBindViewHolder(holder: ComplaintViewHolder, position: Int) {
-        holder.binding.attendanceDate.text = "#"+ " " + complaintList[position].ComplaintId.toString()
-        holder.binding.complaintTitle.text = complaintList[position].ComplaintTitle
-        holder.binding.complaintStatus.text = complaintList[position].ComplaintText
+
+        val item = complaintList[position]
+
+        holder.binding.attendanceDate.text = "# ${item.ComplaintId}"
+        holder.binding.complaintTitle.text = item.ComplaintTitle
+        holder.binding.complaintStatus.text = item.ComplaintText
+
+        val fileLink = item.FileDownloadLink
+        val fileName = item.UserFileName
+
+        // 🔍 VIEW COMPLAINT DIALOG
         holder.binding.viewComplaint.setOnClickListener {
+
             val dialogBinding = DialogComplaintDetailsBinding.inflate(LayoutInflater.from(mCtx))
+
             val dialogBuilder = AlertDialog.Builder(mCtx)
                 .setView(dialogBinding.root)
                 .create()
-            dialogBinding.titleComplaint.setText( complaintList[position].ComplaintTitle)
-            dialogBinding.complaintText.setText(complaintList[position].ComplaintText)
+
+            dialogBinding.titleComplaint.setText(item.ComplaintTitle)
+            dialogBinding.complaintText.setText(item.ComplaintText)
+
+            // ✅ HANDLE FILE UI (NEW CARD DESIGN)
+            if (!fileLink.isNullOrEmpty() && fileLink != "https://apiesm.cyberasol.com/") {
+
+                dialogBinding.attachmentTitle.visibility = View.VISIBLE
+                dialogBinding.fileContainer.visibility = View.VISIBLE
+                dialogBinding.fileNameText.text = fileName ?: "Attachment"
+
+                dialogBinding.viewFileBtn.setOnClickListener {
+                    try {
+                        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
+                        intent.data = android.net.Uri.parse(fileLink)
+                        mCtx.startActivity(intent)
+                    } catch (e: Exception) {
+                        android.widget.Toast.makeText(
+                            mCtx,
+                            "Unable to open file",
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+            } else {
+                dialogBinding.fileContainer.visibility = View.GONE
+                dialogBinding.attachmentTitle.visibility = View.GONE
+            }
+
             dialogBinding.submitComplaint.setOnClickListener {
                 dialogBuilder.dismiss()
             }
+
             dialogBuilder.show()
         }
 
-        holder.binding.viewResponse.setOnClickListener(View.OnClickListener {
-            val complaintId = complaintList[position].ComplaintId ?: return@OnClickListener
+        // 💬 VIEW RESPONSE CHAT
+        holder.binding.viewResponse.setOnClickListener {
+
+            val complaintId = item.ComplaintId ?: return@setOnClickListener
             val userId = AppConstants.USER_IDENTITY
-         //   val userId = complaintList[position].UserIdentity ?: return@OnClickListener
 
             if (mCtx is FragmentActivity) {
-                val navController = (mCtx as FragmentActivity).findNavController(R.id.nav_host_fragment)
-                navController.navigate(ComplaintFragmentDirections.actionComplaintFragmentToResponseChatFragment(complaintId,userId))
-            }
-        })
+                val navController =
+                    (mCtx as FragmentActivity).findNavController(R.id.nav_host_fragment)
 
+                navController.navigate(
+                    ComplaintFragmentDirections
+                        .actionComplaintFragmentToResponseChatFragment(complaintId, userId)
+                )
+            }
+        }
     }
 
     class ComplaintViewHolder(val binding: RecyclerviewLayoutComplaintsHistoryBinding)

@@ -63,7 +63,84 @@
         android:inputType="textMultiLine"
         android:fontFamily="@font/montserrat_regular"
         android:enabled="false"
+        android:layout_marginBottom="10dp"
         />
+
+    <TextView
+        android:id="@+id/attachmentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attachment"
+        android:layout_gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_regular"
+        android:visibility="gone"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/fileContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        android:backgroundTint="@color/white"
+        app:strokeWidth="1dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical">
+
+            <!-- 📎 Icon -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_upload"
+                app:tint="@color/colorPrimary"/>
+
+            <!-- 📄 File Name -->
+            <TextView
+                android:id="@+id/fileNameText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="file.pdf"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_regular"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <!-- 👁️ View Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/viewFileBtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="View"
+                android:textAllCaps="false"
+                android:textSize="8sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/colorPrimary"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="6dp"
+                android:backgroundTint="@color/view_button_file"
+                app:strokeColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submitComplaint"

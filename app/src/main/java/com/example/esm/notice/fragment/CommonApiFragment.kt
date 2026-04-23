@@ -30,6 +30,8 @@ import com.example.esm.utils.SharedPrefsHelper
 import com.example.esm.welcome.models.IdentityModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class CommonApiFragment : Fragment() ,RecyclerViewAdapter.onNoticeClickListener, RecyclerViewFileAdapter.onItemClickListener {
     lateinit var binding: FragmentCommonApiBinding
@@ -141,6 +143,24 @@ class CommonApiFragment : Fragment() ,RecyclerViewAdapter.onNoticeClickListener,
 
         // Set the notification text
         dialogBinding.notificationText.setText(model.NotificationText)
+
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.getDefault())
+
+        val dateObj = try {
+            model.CreatedDate?.let { inputFormat.parse(it) }
+        } catch (e: Exception) {
+            null
+        }
+
+        val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+
+
+        dialogBinding.notificationDate.text =
+            dateObj?.let { dateFormat.format(it) } ?: ""
+
+        dialogBinding.notificationTime.text =
+            dateObj?.let { timeFormat.format(it) } ?: ""
 
         dialogBinding.ivCancelDialog.setOnClickListener { customDialog.dismiss() }
 

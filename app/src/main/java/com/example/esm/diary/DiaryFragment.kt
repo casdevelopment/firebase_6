@@ -1,6 +1,7 @@
 package com.example.esm.diary
 
 import android.Manifest
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -27,6 +28,8 @@ import com.example.esm.dashboardactivity.DashboardActivity
 import com.example.esm.databinding.FragmentDiaryBinding
 import com.example.esm.diary.adapters.DiaryAdapter
 import com.example.esm.diary.models.DiaryModel
+import com.example.esm.diary.models.DiaryResponseModel
+import com.example.esm.diary.models.StudentDiaryRequestModel
 import com.example.esm.diary.viewmodels.DiaryViewModel
 import com.example.esm.network.Status
 import com.example.esm.utils.AppConstants
@@ -49,6 +52,7 @@ class DiaryFragment : Fragment(), DiaryAdapter.onDownloadClickListener {
     var diaryDate: String = ""
     lateinit var calendar: Calendar
     var permissionCode = 101
+
 
     val args : DiaryFragmentArgs by navArgs()
 
@@ -303,6 +307,89 @@ class DiaryFragment : Fragment(), DiaryAdapter.onDownloadClickListener {
 
 
 
+    }
+
+    override fun onDiaryClick(diaryModel: DiaryModel) {
+
+        val request = StudentDiaryRequestModel(
+            UserIdentity = sharedPrefsHelper.getUserId().toString(),
+            StudentId = AppConstants.STUDENT_ID,
+            DiaryId = diaryModel.DiaryId ?: 0
+        )
+        callDiaryDetailApi(request)
+    }
+
+    private fun callDiaryDetailApi(request : StudentDiaryRequestModel) {
+
+        if (request.DiaryId == null) {
+            Toast.makeText(requireContext(), "Invalid diary id", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        viewModel.getDiaryById(request).observe(viewLifecycleOwner) { apiResponse ->
+
+            when (apiResponse.status) {
+
+                Status.LOADING -> {
+                    AppUtils.startLoader(requireActivity())
+                }
+
+                Status.SUCCESS -> {
+                    AppUtils.stopLoader()
+
+                    if (apiResponse.data?.isSuccessful == true) {
+
+                        val response = apiResponse.data.body()
+
+                        if (response != null) {
+                            showDiaryDetail(response)
+                        } else {
+                            Toast.makeText(requireContext(), "Empty response", Toast.LENGTH_SHORT).show()
+                        }
+
+                    } else {
+                        Toast.makeText(requireContext(), "Request failed", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                Status.ERROR -> {
+                    AppUtils.stopLoader()
+                    Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT).show()
+                    Log.d("DiaryDetail", "error: ${apiResponse.message}")
+                }
+            }
+        }
+    }
+
+    private fun showDiaryDetail(response: DiaryResponseModel) {
+
+        val diary = response.DiaryList?.firstOrNull()
+
+        if (diary == null) {
+            Toast.makeText(requireContext(), "No data found", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val message = """
+📘 Subject: ${diary.SubjectName}
+
+📝 Notes:
+${diary.DiaryNotes}
+
+👨‍🏫 Teacher: ${diary.CreatedBy}
+
+📅 Date: ${diary.CreatedDate}
+
+📎 File: ${if (diary.UserFileName.isNullOrEmpty()) "No Attachment" else diary.UserFileName}
+    """.trimIndent()
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Diary Detail")
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     /*override fun onRequestPermissionsResult(

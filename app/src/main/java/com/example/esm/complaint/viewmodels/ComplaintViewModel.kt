@@ -11,6 +11,8 @@ import com.example.esm.network.koin_module.Repository
 import com.example.esm.welcome.models.IdentityModel
 import com.example.esm.welcome.models.StudentResponseModel
 import kotlinx.coroutines.Dispatchers
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 
 class ComplaintViewModel(private val repository: Repository): ViewModel() {
@@ -27,11 +29,11 @@ class ComplaintViewModel(private val repository: Repository): ViewModel() {
 
     }
 
-    fun complaintRegistration(model: ComplaintModel) : LiveData<NetworkStates<Response<ComplaintModel>>> {
+    fun complaintRegistration(model: RequestBody, file: MultipartBody.Part?) : LiveData<NetworkStates<Response<ComplaintModel>>> {
         return liveData(Dispatchers.IO){
             emit(NetworkStates.loading(null))
             try {
-                emit(NetworkStates.success(data = repository.complaintRegistration(model)))
+                emit(NetworkStates.success(data = repository.complaintRegistration(model,file)))
 
             }catch (e: Exception){
                 emit(NetworkStates.error(data = null, message = e.message?:"something went wrong"))
