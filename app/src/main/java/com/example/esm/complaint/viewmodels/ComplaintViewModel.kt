@@ -29,11 +29,24 @@ class ComplaintViewModel(private val repository: Repository): ViewModel() {
 
     }
 
-    fun complaintRegistration(model: RequestBody, file: MultipartBody.Part?) : LiveData<NetworkStates<Response<ComplaintModel>>> {
+    fun complaintRegistrationForRHSClient(model: RequestBody, file: MultipartBody.Part?) : LiveData<NetworkStates<Response<ComplaintModel>>> {
         return liveData(Dispatchers.IO){
             emit(NetworkStates.loading(null))
             try {
-                emit(NetworkStates.success(data = repository.complaintRegistration(model,file)))
+                emit(NetworkStates.success(data = repository.complaintRegistrationForRHSClient(model,file)))
+
+            }catch (e: Exception){
+                emit(NetworkStates.error(data = null, message = e.message?:"something went wrong"))
+
+            }
+        }
+
+    }
+    fun complaintRegistration(model: ComplaintModel) : LiveData<NetworkStates<Response<ComplaintModel>>> {
+        return liveData(Dispatchers.IO){
+            emit(NetworkStates.loading(null))
+            try {
+                emit(NetworkStates.success(data = repository.complaintRegistration(model)))
 
             }catch (e: Exception){
                 emit(NetworkStates.error(data = null, message = e.message?:"something went wrong"))

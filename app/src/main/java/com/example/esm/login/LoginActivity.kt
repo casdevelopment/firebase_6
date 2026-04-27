@@ -101,6 +101,8 @@ class LoginActivity <T>: AppCompatActivity() {
           setContentView(R.layout.activity_login_sun)
       }else if (packageName.equals("com.geis.esm")) {
           setContentView(R.layout.activity_login_geis)
+      }else if (packageName.equals("com.agora.esm")) {
+          setContentView(R.layout.activity_login_agora)
       }
 
 

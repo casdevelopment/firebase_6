@@ -32,11 +32,11 @@
     <color name="end_color_item">#2e365b</color>-->
 
     <!--rha-->
-    <color name="colorPrimary">#261d48</color>
+    <!--<color name="colorPrimary">#261d48</color>
     <color name="colorPrimaryDark">#4d456a</color>
     <color name="colorAccent">#E43B3C</color>
     <color name="start_color_item">#261d48</color>
-    <color name="end_color_item">#4d456a</color>
+    <color name="end_color_item">#4d456a</color>-->
     <color name="view_button_file">#DAD6EB</color>
 
     <!--cgss-->
@@ -67,6 +67,13 @@
     <color name="colorAccent">#eedd51</color>
     <color name="start_color_item">#167cc1</color>
     <color name="end_color_item">#116BA8</color>-->
+
+    <!--agora-->
+    <color name="colorPrimary">#32AADE</color>
+    <color name="colorPrimaryDark">#279AC8</color>
+    <color name="colorAccent">#32AADE</color>
+    <color name="start_color_item">#32AADE</color>
+    <color name="end_color_item">#279AC8</color>
 
 
 

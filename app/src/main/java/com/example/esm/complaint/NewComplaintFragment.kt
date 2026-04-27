@@ -5,13 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.esm.R
 import com.example.esm.complaint.models.ComplaintModel
@@ -33,7 +32,7 @@ import java.io.File
 
 
 class NewComplaintFragment : Fragment() {
-     lateinit var binding: FragmentNewComplaintBinding
+    lateinit var binding: FragmentNewComplaintBinding
     val sharedPrefsHelper: SharedPrefsHelper by inject()
     private val viewModel: ComplaintViewModel by viewModel()
     private val activity: DashboardActivity? = null
@@ -55,11 +54,14 @@ class NewComplaintFragment : Fragment() {
                     Toast.makeText(requireContext(), "File selected", Toast.LENGTH_SHORT).show()
 
                 } else {
-                    Toast.makeText(requireContext(), "Only Image or PDF allowed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Only Image or PDF allowed",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +73,8 @@ class NewComplaintFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,
+        binding = DataBindingUtil.inflate(
+            inflater,
             R.layout.fragment_new_complaint,
             container,
             false
@@ -86,22 +89,29 @@ class NewComplaintFragment : Fragment() {
         binding.attachFile.setOnClickListener {
             filePickerLauncher.launch("*/*")
         }
+        if (requireContext().packageName.equals("com.rha.esm")) {
+            binding.attachFile.visibility = VISIBLE
+            binding.fileName.visibility = VISIBLE
+        }
 
 
         binding.submitComplaint.setOnClickListener {
-            if (validation()){
-//                val complaintModel= ComplaintModel()
-//
-//                complaintModel.UserIdentity = sharedPrefsHelper.getUserId().toString()
-//                complaintModel.ComplaintTitle = binding.titleComplaint.text.toString()
-//                complaintModel.ComplaintText = binding.complaintText.text.toString()
-//                complaintModel.StudentId = AppConstants.STUDENT_ID.toString()
+            if (validation()) {
+                if (requireContext().packageName.equals("com.rha.esm")) {
+                    callComplaintRegistrationApiForRHSClient()
+                } else {
+                    val complaintModel = ComplaintModel()
 
-//                complaintModel.ComplaintId = 0
-//                complaintModel.Logged = 0
+                    complaintModel.UserIdentity = sharedPrefsHelper.getUserId().toString()
+                    complaintModel.ComplaintTitle = binding.titleComplaint.text.toString()
+                    complaintModel.ComplaintText = binding.complaintText.text.toString()
+                    complaintModel.StudentId = AppConstants.STUDENT_ID.toString()
 
+                    complaintModel.ComplaintId = 0
+                    complaintModel.Logged = 0
+                    callComplaintRegistrationApi(complaintModel)
+                }
 
-                callComplaintRegistrationApi()
 
             }
 
@@ -116,20 +126,14 @@ class NewComplaintFragment : Fragment() {
             binding.titleError.visibility = View.VISIBLE
             binding.titleError.text = "Please enter title for complaint"
             return false
-        }
-
-        else if (binding.complaintText.text.isEmpty()) {
+        } else if (binding.complaintText.text.isEmpty()) {
             binding.complaintError.visibility = View.VISIBLE
             binding.complaintError.text = "Please enter complaint details"
             return false
-        }
-
-        else if (selectedFileUri == null) {
+        } else if (selectedFileUri == null) {
             Toast.makeText(requireContext(), "Please attach a file", Toast.LENGTH_SHORT).show()
             return false
-        }
-
-        else {
+        } else {
             binding.titleError.visibility = View.GONE
             binding.complaintError.visibility = View.GONE
             return true
@@ -141,7 +145,7 @@ class NewComplaintFragment : Fragment() {
         return type == "application/pdf" || type?.startsWith("image/") == true
     }
 
-    // ✅ Convert URI → File
+    //  Convert URI → File
     private fun uriToFile(uri: Uri): File {
         val file = File(requireContext().cacheDir, "upload_${System.currentTimeMillis()}")
         val inputStream = requireContext().contentResolver.openInputStream(uri)
@@ -156,8 +160,7 @@ class NewComplaintFragment : Fragment() {
     }
 
 
-
-    private fun callComplaintRegistrationApi() {
+    private fun callComplaintRegistrationApiForRHSClient() {
 
         val complaintModel = ComplaintModel().apply {
 
@@ -171,8 +174,6 @@ class NewComplaintFragment : Fragment() {
 //
 
         }
-
-
 
 
         // 2️⃣ Convert model → JSON → RequestBody
@@ -198,36 +199,80 @@ class NewComplaintFragment : Fragment() {
 
 
 
-        viewModel.complaintRegistration(modelBody, filePart).observe(viewLifecycleOwner){ apiResponse->
-            when(apiResponse.status){
-                Status.LOADING->{
-                    AppUtils.startLoader(requireActivity())
-                    Log.d("response","loading")
+        viewModel.complaintRegistrationForRHSClient(modelBody, filePart)
+            .observe(viewLifecycleOwner) { apiResponse ->
+                when (apiResponse.status) {
+                    Status.LOADING -> {
+                        AppUtils.startLoader(requireActivity())
+                        Log.d("response", "loading")
 
-                }
-                Status.SUCCESS->{
-                    AppUtils.stopLoader()
-                    if (apiResponse.data!= null){
-                        if (apiResponse.data.isSuccessful){
-                            findNavController().popBackStack()
-                           // supportFragmentManager.popBackStack("YOUR_FRAGMENT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                            // getActivity()?.finish()
-                            //fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    }
+
+                    Status.SUCCESS -> {
+                        AppUtils.stopLoader()
+                        if (apiResponse.data != null) {
+                            if (apiResponse.data.isSuccessful) {
+                                findNavController().popBackStack()
+                                // supportFragmentManager.popBackStack("YOUR_FRAGMENT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                                // getActivity()?.finish()
+                                //fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 //                            Log.d("response"," new complaint is succesful")
 //                            getFragmentManager()?.popBackStack();
 
+                            }
                         }
                     }
-                }
-                Status.ERROR->{
-                    AppUtils.stopLoader()
-                    Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT).show()
-                    Log.d("response","error:${apiResponse.message}")
 
+                    Status.ERROR -> {
+                        AppUtils.stopLoader()
+                        Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT)
+                            .show()
+                        Log.d("response", "error:${apiResponse.message}")
+
+                    }
                 }
+
             }
 
-        }
+
+    }
+    private fun callComplaintRegistrationApi(complaintModel: ComplaintModel) {
+
+
+        viewModel.complaintRegistration(complaintModel)
+            .observe(viewLifecycleOwner) { apiResponse ->
+                when (apiResponse.status) {
+                    Status.LOADING -> {
+                        AppUtils.startLoader(requireActivity())
+                        Log.d("response", "loading")
+
+                    }
+
+                    Status.SUCCESS -> {
+                        AppUtils.stopLoader()
+                        if (apiResponse.data != null) {
+                            if (apiResponse.data.isSuccessful) {
+                                findNavController().popBackStack()
+                                // supportFragmentManager.popBackStack("YOUR_FRAGMENT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                                // getActivity()?.finish()
+                                //fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                            Log.d("response"," new complaint is succesful")
+//                            getFragmentManager()?.popBackStack();
+
+                            }
+                        }
+                    }
+
+                    Status.ERROR -> {
+                        AppUtils.stopLoader()
+                        Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT)
+                            .show()
+                        Log.d("response", "error:${apiResponse.message}")
+
+                    }
+                }
+
+            }
 
 
     }
@@ -246,7 +291,6 @@ class NewComplaintFragment : Fragment() {
 
         return name
     }
-
 
 
 }

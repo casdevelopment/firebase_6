@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:fontFamily="@font/montserrat_regular"
-                    tools:text="SubHeading"
+                    tools:text="date"
                     android:textColor="@color/login_attributes_color" />
 
                     <TextView
@@ -74,7 +74,7 @@
                         android:layout_marginStart="20dp"
                         android:textSize="14sp"
                         android:fontFamily="@font/montserrat_regular"
-                        tools:text="SubHeading"
+                        tools:text="time"
                         android:textColor="@color/login_attributes_color" />
 
                 </LinearLayout>

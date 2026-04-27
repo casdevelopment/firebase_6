@@ -72,9 +72,12 @@ interface ApiInterface {
     @POST(AppConstants.STD_COMPLAINT_LIST)
     suspend fun stdComplaintList(@Body model: IdentityModel): Response<StudentResponseModel>
 
+    @POST(AppConstants.STD_COMPLAINT_REGISTRATION)
+    suspend fun complaintRegistration(@Body model: ComplaintModel): Response<ComplaintModel>
+
     @Multipart
     @POST(AppConstants.STD_COMPLAINT_REGISTRATION)
-    suspend fun complaintRegistration(
+    suspend fun complaintRegistrationForRHSClient(
         @Part("Model") model: RequestBody,
         @Part complainAttachment: MultipartBody.Part?
     ): Response<ComplaintModel>

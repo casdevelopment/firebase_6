@@ -253,7 +253,7 @@ open class DashboardActivity : AppCompatActivity() {
             binding.linkdin.visibility = View.GONE
         }
 
-        if (packageName.equals("com.rha.esm")) {
+        /*if (packageName.equals("com.rha.esm")) {
                 binding.alertSmsMenu.visibility = View.GONE
                 binding.complaintMenu.visibility = View.GONE
                 binding.resultMenu.visibility = View.GONE
@@ -265,7 +265,7 @@ open class DashboardActivity : AppCompatActivity() {
                 binding.paymentHistoryMenu.visibility = View.GONE
 
 
-        }
+        }*/
         fireBaseNotificationData()
         hideLayout()
     }

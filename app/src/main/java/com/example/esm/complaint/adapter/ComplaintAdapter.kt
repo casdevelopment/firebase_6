@@ -1,6 +1,7 @@
 package com.example.esm.complaint.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,53 +84,65 @@ class ComplaintAdapter( val complaintList: ArrayList<ComplaintModel>,
         holder.binding.complaintTitle.text = item.ComplaintTitle
         holder.binding.complaintStatus.text = item.ComplaintText
 
-        val fileLink = item.FileDownloadLink
-        val fileName = item.UserFileName
 
-        // 🔍 VIEW COMPLAINT DIALOG
-        holder.binding.viewComplaint.setOnClickListener {
+            holder.binding.viewComplaint.setOnClickListener {
 
-            val dialogBinding = DialogComplaintDetailsBinding.inflate(LayoutInflater.from(mCtx))
+                val dialogBinding = DialogComplaintDetailsBinding.inflate(LayoutInflater.from(mCtx))
 
-            val dialogBuilder = AlertDialog.Builder(mCtx)
-                .setView(dialogBinding.root)
-                .create()
+                val dialogBuilder = AlertDialog.Builder(mCtx)
+                    .setView(dialogBinding.root)
+                    .create()
 
-            dialogBinding.titleComplaint.setText(item.ComplaintTitle)
-            dialogBinding.complaintText.setText(item.ComplaintText)
+                dialogBinding.titleComplaint.setText(item.ComplaintTitle)
+                dialogBinding.complaintText.setText(item.ComplaintText)
 
-            // ✅ HANDLE FILE UI (NEW CARD DESIGN)
-            if (!fileLink.isNullOrEmpty() && fileLink != "https://apiesm.cyberasol.com/") {
 
-                dialogBinding.attachmentTitle.visibility = View.VISIBLE
-                dialogBinding.fileContainer.visibility = View.VISIBLE
-                dialogBinding.fileNameText.text = fileName ?: "Attachment"
 
-                dialogBinding.viewFileBtn.setOnClickListener {
-                    try {
-                        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
-                        intent.data = android.net.Uri.parse(fileLink)
-                        mCtx.startActivity(intent)
-                    } catch (e: Exception) {
-                        android.widget.Toast.makeText(
-                            mCtx,
-                            "Unable to open file",
-                            android.widget.Toast.LENGTH_SHORT
-                        ).show()
+                if (mCtx.packageName.equals("com.rha.esm")) {
+                    val fileLink = item.FileDownloadLink
+                    Log.v("FileDownloadLink", "FileDownloadLink " + fileLink)
+                    val fileName = item.UserFileName
+                    if (!fileLink.isNullOrEmpty()) {
+
+                        dialogBinding.attachmentTitle.visibility = View.VISIBLE
+                        dialogBinding.fileContainer.visibility = View.VISIBLE
+
+                            dialogBinding.fileNameText.text = fileName ?: "Attachment"
+
+                            dialogBinding.viewFileBtn.setOnClickListener {
+                                try {
+                                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
+                                    intent.data = android.net.Uri.parse(fileLink)
+                                    mCtx.startActivity(intent)
+                                } catch (e: Exception) {
+                                    android.widget.Toast.makeText(
+                                        mCtx,
+                                        "Unable to open file",
+                                        android.widget.Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+
+                    } else {
+                        dialogBinding.fileContainer.visibility = View.GONE
+                        dialogBinding.attachmentTitle.visibility = View.GONE
                     }
+                }else {
+                    dialogBinding.fileContainer.visibility = View.GONE
+                    dialogBinding.attachmentTitle.visibility = View.GONE
                 }
 
-            } else {
-                dialogBinding.fileContainer.visibility = View.GONE
-                dialogBinding.attachmentTitle.visibility = View.GONE
+
+                dialogBinding.submitComplaint.setOnClickListener {
+                    dialogBuilder.dismiss()
+                }
+
+                dialogBuilder.show()
             }
 
-            dialogBinding.submitComplaint.setOnClickListener {
-                dialogBuilder.dismiss()
-            }
 
-            dialogBuilder.show()
-        }
+
+
 
         // 💬 VIEW RESPONSE CHAT
         holder.binding.viewResponse.setOnClickListener {

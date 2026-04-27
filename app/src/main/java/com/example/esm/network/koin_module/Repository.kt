@@ -94,8 +94,12 @@ class Repository(private val apiInterface: ApiInterface) {
 
     }
 
-    suspend fun complaintRegistration(model: RequestBody, file: MultipartBody.Part?): Response<ComplaintModel> {
-        return apiInterface.complaintRegistration(model,file)
+    suspend fun complaintRegistrationForRHSClient(model: RequestBody, file: MultipartBody.Part?): Response<ComplaintModel> {
+        return apiInterface.complaintRegistrationForRHSClient(model,file)
+
+    }
+    suspend fun complaintRegistration(model: ComplaintModel): Response<ComplaintModel> {
+        return apiInterface.complaintRegistration(model)
 
     }
 

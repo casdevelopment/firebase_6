@@ -67,6 +67,7 @@
 
             <!-- 📎 Attach File Section -->
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/attachFile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,6 +95,7 @@
 
             <!-- Selected File Name -->
             <TextView
+                android:visibility="gone"
                 android:id="@+id/fileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

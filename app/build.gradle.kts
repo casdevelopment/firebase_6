@@ -54,6 +54,12 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("AgoraSignatureSchools") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\Agora\\Agora.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -168,6 +174,19 @@ android {
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_geis"
         }
 
+        create("AgoraSignatureSchools") {
+            applicationId = "com.agora.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "Agora Signature Schools")
+            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "mobile_code", "351")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_agora"
+            manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_agora"
+        }
+
     }
 
 
@@ -185,6 +204,7 @@ android {
             signingConfig = signingConfigs.getByName("CitiGrammarSchoolSialkot")
             signingConfig = signingConfigs.getByName("SunAcademy")
             signingConfig = signingConfigs.getByName("GEIs")
+            signingConfig = signingConfigs.getByName("AgoraSignatureSchools")
 
 
             proguardFiles(
