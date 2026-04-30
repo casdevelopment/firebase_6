@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
@@ -99,7 +100,9 @@ class NewComplaintFragment : Fragment() {
             if (validation()) {
                 if (requireContext().packageName.equals("com.rha.esm")) {
                     callComplaintRegistrationApiForRHSClient()
+                    Log.d("complaintRegistrationForRHS", "complaintRegistrationForRHS")
                 } else {
+                    Log.d("complaintRegistrationForRHS", "all other app")
                     val complaintModel = ComplaintModel()
 
                     complaintModel.UserIdentity = sharedPrefsHelper.getUserId().toString()
@@ -130,10 +133,7 @@ class NewComplaintFragment : Fragment() {
             binding.complaintError.visibility = View.VISIBLE
             binding.complaintError.text = "Please enter complaint details"
             return false
-        } else if (selectedFileUri == null) {
-            Toast.makeText(requireContext(), "Please attach a file", Toast.LENGTH_SHORT).show()
-            return false
-        } else {
+        }  else {
             binding.titleError.visibility = View.GONE
             binding.complaintError.visibility = View.GONE
             return true
@@ -147,15 +147,19 @@ class NewComplaintFragment : Fragment() {
 
     //  Convert URI → File
     private fun uriToFile(uri: Uri): File {
-        val file = File(requireContext().cacheDir, "upload_${System.currentTimeMillis()}")
-        val inputStream = requireContext().contentResolver.openInputStream(uri)
-        val outputStream = file.outputStream()
+        val contentResolver = requireContext().contentResolver
+        val mimeTypeMap = MimeTypeMap.getSingleton()
+        val extension = mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri))
 
-        inputStream?.copyTo(outputStream)
+        // Add the extension to the filename
+        val fileName = "upload_${System.currentTimeMillis()}${if (extension != null) ".$extension" else ""}"
+        val file = File(requireContext().cacheDir, fileName)
 
-        inputStream?.close()
-        outputStream.close()
-
+        contentResolver.openInputStream(uri)?.use { inputStream ->
+            file.outputStream().use { outputStream ->
+                inputStream.copyTo(outputStream)
+            }
+        }
         return file
     }
 
@@ -204,11 +208,14 @@ class NewComplaintFragment : Fragment() {
                 when (apiResponse.status) {
                     Status.LOADING -> {
                         AppUtils.startLoader(requireActivity())
-                        Log.d("response", "loading")
+                        Log.d("complaintRegistrationForRHS", "loading")
 
                     }
 
                     Status.SUCCESS -> {
+                        Log.d("complaintRegistrationForRHS", "SUCCESS")
+                        Log.d("complaintRegistrationForRHS", "apiResponse.data "+apiResponse.data)
+                        Log.d("complaintRegistrationForRHS", "apiResponse.data body "+ Gson().toJson(apiResponse.data?.body()))
                         AppUtils.stopLoader()
                         if (apiResponse.data != null) {
                             if (apiResponse.data.isSuccessful) {
@@ -227,7 +234,7 @@ class NewComplaintFragment : Fragment() {
                         AppUtils.stopLoader()
                         Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT)
                             .show()
-                        Log.d("response", "error:${apiResponse.message}")
+                        Log.d("complaintRegistrationForRHS", "error:${apiResponse.message}")
 
                     }
                 }

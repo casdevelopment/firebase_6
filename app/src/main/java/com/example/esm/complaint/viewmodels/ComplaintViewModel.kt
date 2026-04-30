@@ -1,5 +1,6 @@
 package com.example.esm.complaint.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -36,6 +37,7 @@ class ComplaintViewModel(private val repository: Repository): ViewModel() {
                 emit(NetworkStates.success(data = repository.complaintRegistrationForRHSClient(model,file)))
 
             }catch (e: Exception){
+                Log.d("complaintRegistrationForRHS", "Exception "+e.message)
                 emit(NetworkStates.error(data = null, message = e.message?:"something went wrong"))
 
             }

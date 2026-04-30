@@ -116,8 +116,8 @@ android {
         create("RockhillAcademy") {
             applicationId = "com.rha.esm"
             dimension = "esm"
-            versionCode = 4
-            versionName = "0.4"
+            versionCode = 5
+            versionName = "0.5"
             resValue("string", "app_name", "Rockhill Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "320")
@@ -177,8 +177,8 @@ android {
         create("AgoraSignatureSchools") {
             applicationId = "com.agora.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "Agora Signature Schools")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "351")
