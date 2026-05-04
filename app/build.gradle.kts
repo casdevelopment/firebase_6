@@ -116,8 +116,8 @@ android {
         create("RockhillAcademy") {
             applicationId = "com.rha.esm"
             dimension = "esm"
-            versionCode = 5
-            versionName = "0.5"
+            versionCode = 6
+            versionName = "0.6"
             resValue("string", "app_name", "Rockhill Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "320")

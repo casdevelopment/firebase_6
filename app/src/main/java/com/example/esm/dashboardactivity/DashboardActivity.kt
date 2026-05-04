@@ -156,7 +156,7 @@ open class DashboardActivity : AppCompatActivity() {
                 binding.diaryMenu.visibility = View.GONE
                 binding.notificationsMenu.visibility = View.GONE
                 binding.eventsMenu.visibility = View.GONE
-                binding.updatePassword.visibility = View.GONE
+              //  binding.updatePassword.visibility = View.GONE
 
             }
         }
@@ -172,7 +172,7 @@ open class DashboardActivity : AppCompatActivity() {
                 binding.diaryMenu.visibility = View.GONE
                 binding.notificationsMenu.visibility = View.GONE
                 binding.eventsMenu.visibility = View.GONE
-                binding.updatePassword.visibility = View.GONE
+              //  binding.updatePassword.visibility = View.GONE
 
             }
         }
@@ -185,7 +185,7 @@ open class DashboardActivity : AppCompatActivity() {
                 binding.diaryMenu.visibility = View.GONE
                 binding.notificationsMenu.visibility = View.GONE
                 binding.eventsMenu.visibility = View.GONE
-                binding.updatePassword.visibility = View.GONE
+              //  binding.updatePassword.visibility = View.GONE
 
             }
         }
@@ -208,7 +208,7 @@ open class DashboardActivity : AppCompatActivity() {
                 binding.diaryMenu.visibility = View.GONE
                 binding.notificationsMenu.visibility = View.GONE
                 binding.eventsMenu.visibility = View.GONE
-                binding.updatePassword.visibility = View.GONE
+                //binding.updatePassword.visibility = View.GONE
             }
         }
 
@@ -220,22 +220,22 @@ open class DashboardActivity : AppCompatActivity() {
                 binding.diaryMenu.visibility = View.GONE
                 binding.notificationsMenu.visibility = View.GONE
                 binding.eventsMenu.visibility = View.GONE
-                binding.updatePassword.visibility = View.GONE
+            //    binding.updatePassword.visibility = View.GONE
 
             }
         }
 
 
         if (packageName.equals("com.rubricseducationsystem.esm")) {
-            binding.updatePasswordMenu.visibility = View.VISIBLE
+          //  binding.updatePasswordMenu.visibility = View.VISIBLE
         } else {
-            binding.updatePasswordMenu.visibility = View.GONE
+          //  binding.updatePasswordMenu.visibility = View.GONE
         }
 
         if (packageName.equals("com.daswahdatbranch.esm")) {
             binding.updatePassword.visibility = View.VISIBLE
         }  else {
-            binding.updatePassword.visibility = View.GONE
+           // binding.updatePassword.visibility = View.GONE
         }
 
         if (packageName.equals("com.csm.esm")) {
@@ -244,8 +244,8 @@ open class DashboardActivity : AppCompatActivity() {
 
 
         if (sharedPrefsHelper.getBoolean(KEY_DUMMY_LOGIN, false)) {
-            binding.updatePasswordMenu.visibility = View.GONE
-            binding.updatePassword.visibility = View.GONE
+          //  binding.updatePasswordMenu.visibility = View.GONE
+           // binding.updatePassword.visibility = View.GONE
         }
 
         if (packageName.equals("com.bass.esm")){
