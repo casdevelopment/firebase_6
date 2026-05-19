@@ -107,6 +107,8 @@ class SignUpActivity : AppCompatActivity() {
            setContentView(R.layout.activity_sign_up_geis)
        }else if (packageName.equals("com.agora.esm")) {
            setContentView(R.layout.activity_sign_up_agora)
+       }else if (packageName.equals("com.apsgujrawala.esm")) {
+           setContentView(R.layout.activity_sign_up_aps)
        }
     }
     private fun setMobileCode() {

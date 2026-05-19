@@ -60,6 +60,12 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("APSGujranwala") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\APSGujranwala\\APSGujranwala.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -186,6 +192,18 @@ android {
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_agora"
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_agora"
         }
+        create("APSGujranwala") {
+            applicationId = "com.apsgujrawala.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "APS Gujranwala")
+            resValue("string", "base_url", "https://apsgwa.cyberasol.com/api/api/Mobile/")
+            resValue("string", "mobile_code", "350")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_aps"
+            manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_aps"
+        }
 
     }
 
@@ -205,6 +223,7 @@ android {
             signingConfig = signingConfigs.getByName("SunAcademy")
             signingConfig = signingConfigs.getByName("GEIs")
             signingConfig = signingConfigs.getByName("AgoraSignatureSchools")
+            signingConfig = signingConfigs.getByName("APSGujranwala")
 
 
             proguardFiles(

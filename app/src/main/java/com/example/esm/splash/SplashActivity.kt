@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.esm.R
 import com.example.esm.databinding.ActivitySplashAgoraBinding
+import com.example.esm.databinding.ActivitySplashApsBinding
 import com.example.esm.databinding.ActivitySplashBassBinding
 import com.example.esm.databinding.ActivitySplashBinding
 import com.example.esm.databinding.ActivitySplashCgssBinding
@@ -61,6 +62,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var bindingCgss: ActivitySplashCgssBinding
     lateinit var bindingSun: ActivitySplashSunBinding
     lateinit var bindingGeis: ActivitySplashGeisBinding
+    lateinit var bindingAps: ActivitySplashApsBinding
 
   //  var sisaDelay:Long=14000
 
@@ -81,6 +83,7 @@ class SplashActivity : AppCompatActivity() {
         bindingSun = ActivitySplashSunBinding.inflate(layoutInflater)
         bindingGeis = ActivitySplashGeisBinding.inflate(layoutInflater)
         bindingAgora = ActivitySplashAgoraBinding.inflate(layoutInflater)
+        bindingAps = ActivitySplashApsBinding.inflate(layoutInflater)
 
 
 
@@ -114,6 +117,8 @@ class SplashActivity : AppCompatActivity() {
            setContentView(bindingGeis.root)
        }else if (packageName.equals("com.agora.esm")) {
            setContentView(bindingAgora.root)
+       }else if (packageName.equals("com.apsgujrawala.esm")) {
+           setContentView(bindingAps.root)
        }
 
 
