@@ -39,11 +39,11 @@
     <color name="end_color_item">#4d456a</color>-->
 
     <!--cgss-->
-    <!--<color name="colorPrimary">#b18a47</color>
+    <color name="colorPrimary">#b18a47</color>
     <color name="colorPrimaryDark">#002579</color>
     <color name="colorAccent">#268100</color>
     <color name="start_color_item">#b18a47</color>
-    <color name="end_color_item">#002579</color>   -->
+    <color name="end_color_item">#002579</color>
 
     <!--sun academy-->
    <!-- <color name="colorPrimary">#1239e0</color>
@@ -75,11 +75,11 @@
     <color name="end_color_item">#279AC8</color>-->
 
     <!--aps gujrawala-->
-    <color name="colorPrimary">#005e32</color>
+   <!-- <color name="colorPrimary">#005e32</color>
     <color name="colorPrimaryDark">#043A1F</color>
     <color name="colorAccent">#009688</color>
     <color name="start_color_item">#005e32</color>
-    <color name="end_color_item">#043A1F</color>
+    <color name="end_color_item">#043A1F</color>-->
 
 
 
