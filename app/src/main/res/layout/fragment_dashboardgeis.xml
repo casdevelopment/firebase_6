@@ -65,7 +65,6 @@
                     android:baselineAligned="false"
                     android:orientation="horizontal"
                     android:weightSum="3">
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -74,32 +73,34 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
-                            android:id="@+id/downLoadVoucher"
+                            android:id="@+id/attendance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/home_outer_circles">
 
                             <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/file" />
+                                android:src="@drawable/attendance_48" />
+
                         </RelativeLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginStart="4dp"
                             android:layout_marginTop="@dimen/margin15"
                             android:fontFamily="@font/montserrat"
-                            android:text="Download Fee Voucher"
+                            android:text="Attendance"
                             android:textAlignment="center"
                             android:textAllCaps="false"
                             android:textColor="#727272"
                             android:textFontWeight="300"
                             android:textSize="12sp" />
                     </LinearLayout>
+
+
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -187,40 +188,7 @@
                     android:baselineAligned="false"
                     android:orientation="horizontal"
                     android:weightSum="3">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
 
-                        <RelativeLayout
-                            android:id="@+id/attendance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/home_outer_circles">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/attendance_48" />
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="@dimen/margin15"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Attendance"
-                            android:textAlignment="center"
-                            android:textAllCaps="false"
-                            android:textColor="#727272"
-                            android:textFontWeight="300"
-                            android:textSize="12sp" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_diary"
@@ -260,8 +228,6 @@
                             android:textSize="12sp" />
                     </LinearLayout>
 
-
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -291,6 +257,41 @@
                             android:layout_marginTop="@dimen/margin15"
                             android:fontFamily="@font/montserrat"
                             android:text="Results"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textColor="#727272"
+                            android:textFontWeight="300"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/downLoadVoucher"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/home_outer_circles">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/file" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="@dimen/margin15"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Download Fee Voucher"
                             android:textAlignment="center"
                             android:textAllCaps="false"
                             android:textColor="#727272"

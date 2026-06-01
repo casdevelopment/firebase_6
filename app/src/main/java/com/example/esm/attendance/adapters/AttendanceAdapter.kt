@@ -67,6 +67,20 @@ class AttendanceAdapter( val attendanceList: ArrayList<AttendanceModel>, val con
 
 
         }
+        if (context.packageName.equals("com.geis.esm")) {
+            holder.binding.timeIn.visibility= View.GONE
+
+            val param = LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                1.5f
+            )
+            param.gravity=Gravity.CENTER
+            holder.binding.statusAttendance.setLayoutParams(param)
+            holder.binding.attendanceDate.setLayoutParams(param)
+
+
+        }
         if (attendanceList[position].TimeIn != null) {
             val originalDate= attendanceList[position].TimeIn.toString()
             var formattedDate = convertDateFormat(originalDate)

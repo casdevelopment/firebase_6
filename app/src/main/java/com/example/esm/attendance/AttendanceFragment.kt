@@ -71,6 +71,17 @@ class AttendanceFragment : Fragment() {
             binding.dateHeading.setLayoutParams(param)
             binding.statusHeading.setLayoutParams(param)
         }
+        if (requireContext().packageName.equals("com.geis.esm")) {
+            binding.timeHeading.visibility= GONE
+
+            val param = LinearLayout.LayoutParams(
+                0,
+                100,
+                1.5f
+            )
+            binding.dateHeading.setLayoutParams(param)
+            binding.statusHeading.setLayoutParams(param)
+        }
         if (requireContext().packageName.equals("com.bass.esm")) {
             binding.timeOutHeading.visibility= VISIBLE
             binding.historyLayout.weightSum = 4f
