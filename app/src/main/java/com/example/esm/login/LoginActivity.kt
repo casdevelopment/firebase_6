@@ -105,6 +105,10 @@ class LoginActivity <T>: AppCompatActivity() {
           setContentView(R.layout.activity_login_agora)
       }else if (packageName.equals("com.apsgujrawala.esm")) {
           setContentView(R.layout.activity_login_aps)
+      }else if (packageName.equals("com.keystoneacademy.esm")) {
+          setContentView(R.layout.activity_login_keystone)
+      }else  if (packageName.equals("com.busybees.esm")) {
+          setContentView(R.layout.activity_login_busybee)
       }
 
 

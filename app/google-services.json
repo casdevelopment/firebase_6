@@ -45,9 +45,47 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:879f3fb8a7649d9e67ed0e",
+        "android_client_info": {
+          "package_name": "com.busybees.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:632387047947:android:c4e9fec7f9fa661967ed0e",
         "android_client_info": {
           "package_name": "com.cgss.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:e1cadd2f6277b69e67ed0e",
+        "android_client_info": {
+          "package_name": "com.dhal.esm"
         }
       },
       "oauth_client": [],
@@ -105,6 +143,25 @@
         "mobilesdk_app_id": "1:632387047947:android:045e86bd62754e7e67ed0e",
         "android_client_info": {
           "package_name": "com.geis.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:4560699142916cee67ed0e",
+        "android_client_info": {
+          "package_name": "com.keystoneacademy.esm"
         }
       },
       "oauth_client": [],

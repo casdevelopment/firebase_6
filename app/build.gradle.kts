@@ -66,6 +66,18 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("KeystoneAcademy") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\KeystoneAcademy\\keystone.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
+        create("BusyBeesSchoolingSystem") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\BusyBees\\BusyBees.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -204,6 +216,30 @@ android {
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_aps"
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_aps"
         }
+        create("KeystoneAcademy") {
+            applicationId = "com.keystoneacademy.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "Keystone Academy")
+            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "mobile_code", "352")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_keystone"
+            manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_keystone"
+        }
+        create("BusyBeesSchoolingSystem") {
+            applicationId = "com.busybees.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "Busy Bees School and Daycare")
+            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "mobile_code", "355")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_busybees"
+            manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_busybees"
+        }
 
     }
 
@@ -224,6 +260,8 @@ android {
             signingConfig = signingConfigs.getByName("GEIs")
             signingConfig = signingConfigs.getByName("AgoraSignatureSchools")
             signingConfig = signingConfigs.getByName("APSGujranwala")
+            signingConfig = signingConfigs.getByName("KeystoneAcademy")
+            signingConfig = signingConfigs.getByName("BusyBeesSchoolingSystem")
 
 
             proguardFiles(

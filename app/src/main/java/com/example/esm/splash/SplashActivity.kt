@@ -18,10 +18,12 @@ import com.example.esm.databinding.ActivitySplashAgoraBinding
 import com.example.esm.databinding.ActivitySplashApsBinding
 import com.example.esm.databinding.ActivitySplashBassBinding
 import com.example.esm.databinding.ActivitySplashBinding
+import com.example.esm.databinding.ActivitySplashBusybeeBinding
 import com.example.esm.databinding.ActivitySplashCgssBinding
 import com.example.esm.databinding.ActivitySplashEdukalaBinding
 import com.example.esm.databinding.ActivitySplashFssaBinding
 import com.example.esm.databinding.ActivitySplashGeisBinding
+import com.example.esm.databinding.ActivitySplashKeystoneBinding
 import com.example.esm.databinding.ActivitySplashKpsiBinding
 import com.example.esm.databinding.ActivitySplashRhaBinding
 import com.example.esm.databinding.ActivitySplashSunBinding
@@ -63,6 +65,8 @@ class SplashActivity : AppCompatActivity() {
     lateinit var bindingSun: ActivitySplashSunBinding
     lateinit var bindingGeis: ActivitySplashGeisBinding
     lateinit var bindingAps: ActivitySplashApsBinding
+    lateinit var bindingKeystone: ActivitySplashKeystoneBinding
+    lateinit var bindingBusyBee: ActivitySplashBusybeeBinding
 
   //  var sisaDelay:Long=14000
 
@@ -84,6 +88,8 @@ class SplashActivity : AppCompatActivity() {
         bindingGeis = ActivitySplashGeisBinding.inflate(layoutInflater)
         bindingAgora = ActivitySplashAgoraBinding.inflate(layoutInflater)
         bindingAps = ActivitySplashApsBinding.inflate(layoutInflater)
+        bindingKeystone = ActivitySplashKeystoneBinding.inflate(layoutInflater)
+        bindingBusyBee = ActivitySplashBusybeeBinding.inflate(layoutInflater)
 
 
 
@@ -119,6 +125,10 @@ class SplashActivity : AppCompatActivity() {
            setContentView(bindingAgora.root)
        }else if (packageName.equals("com.apsgujrawala.esm")) {
            setContentView(bindingAps.root)
+       }else if (packageName.equals("com.keystoneacademy.esm")) {
+           setContentView(bindingKeystone.root)
+       }else if (packageName.equals("com.busybees.esm")) {
+           setContentView(bindingBusyBee.root)
        }
 
 

@@ -109,6 +109,10 @@ class SignUpActivity : AppCompatActivity() {
            setContentView(R.layout.activity_sign_up_agora)
        }else if (packageName.equals("com.apsgujrawala.esm")) {
            setContentView(R.layout.activity_sign_up_aps)
+       }else if (packageName.equals("com.keystoneacademy.esm")) {
+           setContentView(R.layout.activity_sign_up_keystone)
+       }else  if (packageName.equals("com.busybees.esm")) {
+           setContentView(R.layout.activity_sign_up_busybee)
        }
     }
     private fun setMobileCode() {
