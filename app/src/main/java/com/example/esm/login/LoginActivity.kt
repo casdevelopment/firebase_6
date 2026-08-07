@@ -109,6 +109,8 @@ class LoginActivity <T>: AppCompatActivity() {
           setContentView(R.layout.activity_login_keystone)
       }else  if (packageName.equals("com.busybees.esm")) {
           setContentView(R.layout.activity_login_busybee)
+      }else  if (packageName.equals("com.mes.esm")) {
+          setContentView(R.layout.activity_login_mes)
       }
 
 

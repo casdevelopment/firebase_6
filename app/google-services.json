@@ -197,6 +197,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:4d2efae829e2816567ed0e",
+        "android_client_info": {
+          "package_name": "com.mes.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:632387047947:android:bc46d3e506f5413067ed0e",
         "android_client_info": {
           "package_name": "com.rha.esm"

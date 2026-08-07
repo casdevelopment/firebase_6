@@ -25,6 +25,7 @@ import com.example.esm.databinding.ActivitySplashFssaBinding
 import com.example.esm.databinding.ActivitySplashGeisBinding
 import com.example.esm.databinding.ActivitySplashKeystoneBinding
 import com.example.esm.databinding.ActivitySplashKpsiBinding
+import com.example.esm.databinding.ActivitySplashMesBinding
 import com.example.esm.databinding.ActivitySplashRhaBinding
 import com.example.esm.databinding.ActivitySplashSunBinding
 import com.example.esm.login.LoginActivity
@@ -43,6 +44,8 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import java.io.File
+import java.io.FileOutputStream
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -67,6 +70,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var bindingAps: ActivitySplashApsBinding
     lateinit var bindingKeystone: ActivitySplashKeystoneBinding
     lateinit var bindingBusyBee: ActivitySplashBusybeeBinding
+    lateinit var bindingMes: ActivitySplashMesBinding
 
   //  var sisaDelay:Long=14000
 
@@ -90,6 +94,7 @@ class SplashActivity : AppCompatActivity() {
         bindingAps = ActivitySplashApsBinding.inflate(layoutInflater)
         bindingKeystone = ActivitySplashKeystoneBinding.inflate(layoutInflater)
         bindingBusyBee = ActivitySplashBusybeeBinding.inflate(layoutInflater)
+        bindingMes = ActivitySplashMesBinding.inflate(layoutInflater)
 
 
 
@@ -129,6 +134,9 @@ class SplashActivity : AppCompatActivity() {
            setContentView(bindingKeystone.root)
        }else if (packageName.equals("com.busybees.esm")) {
            setContentView(bindingBusyBee.root)
+       }else if (packageName.equals("com.mes.esm")) {
+           setContentView(bindingMes.root)
+           setupVideoFromAssets("mes_splash_screen .mp4")
        }
 
 
@@ -284,6 +292,48 @@ class SplashActivity : AppCompatActivity() {
         }.addOnFailureListener {
             Log.d("SplashActivity", "fcm_token failure:")
         }
+    }
+
+    private fun setupVideoFromAssets(assetFileName: String) {
+        try {
+            // Write asset to temp cache file so VideoView can access it
+            val videoFile = getAssetAsFile(assetFileName)
+
+            bindingMes.videoView.setVideoPath(videoFile.absolutePath)
+
+            // Video loaded and prepared callback
+            bindingMes.videoView.setOnPreparedListener { mediaPlayer ->
+                // Mute audio by default for splash screens
+                mediaPlayer.setVolume(0f, 0f)
+                bindingMes.videoView.start()
+            }
+
+            // Completion callback
+            bindingMes.videoView.setOnCompletionListener {
+               // navigateToMain()
+            }
+
+            // Error handling fallback
+            bindingMes.videoView.setOnErrorListener { _, _, _ ->
+               // navigateToMain() // Go to main app if video fails
+                true
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            //navigateToMain()
+        }
+    }
+    private fun getAssetAsFile(fileName: String): File {
+        val tempFile = File(cacheDir, fileName)
+        if (tempFile.exists()) return tempFile
+
+        assets.open(fileName).use { inputStream ->
+            FileOutputStream(tempFile).use { outputStream ->
+                inputStream.copyTo(outputStream)
+            }
+        }
+        return tempFile
     }
 
 }

@@ -113,6 +113,8 @@ class SignUpActivity : AppCompatActivity() {
            setContentView(R.layout.activity_sign_up_keystone)
        }else  if (packageName.equals("com.busybees.esm")) {
            setContentView(R.layout.activity_sign_up_busybee)
+       }else  if (packageName.equals("com.mes.esm")) {
+           setContentView(R.layout.activity_sign_up_mes)
        }
     }
     private fun setMobileCode() {

@@ -78,6 +78,12 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("MetropolisEducationSytstem") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\mes\\mes.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -240,6 +246,18 @@ android {
             manifestPlaceholders["launcher"] = "@mipmap/ic_launcher_busybees"
             manifestPlaceholders["launcher_round"] = "@mipmap/ic_launcher_round_busybees"
         }
+        create("MetropolisEducationSytstem") {
+            applicationId = "com.mes.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "Metropolis Education Sytstem")
+            resValue("string", "base_url", "https://portal.metropolis.edu.pk/api/api/Mobile/")
+            resValue("string", "mobile_code", "356")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@drawable/app_icon_mes"
+            manifestPlaceholders["launcher_round"] = "@drawable/app_icon_mes"
+        }
 
     }
 
@@ -262,6 +280,7 @@ android {
             signingConfig = signingConfigs.getByName("APSGujranwala")
             signingConfig = signingConfigs.getByName("KeystoneAcademy")
             signingConfig = signingConfigs.getByName("BusyBeesSchoolingSystem")
+            signingConfig = signingConfigs.getByName("MetropolisEducationSytstem")
 
 
             proguardFiles(
