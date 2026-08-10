@@ -611,6 +611,11 @@ open class DashboardActivity : AppCompatActivity() {
                 newPasswordError.setText(R.string.field_required)
                 return@setOnClickListener
             }
+            if (!AppUtils.isPasswordValid(etNewPassword.text.toString())) {
+                newPasswordError.visibility = View.VISIBLE
+                newPasswordError.setText("Password should be at least 8 characters long")
+                return@setOnClickListener
+            }
             fields["OldPassword"] = etOldPassword.text.toString()
             fields["Password"] = etNewPassword.text.toString()
             callUpdatePasswordApi(fields)
