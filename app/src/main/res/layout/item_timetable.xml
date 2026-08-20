@@ -1,167 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.cardview.widget.CardView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="timetable"
+            type="com.example.esm.studenttimetable.models.TimeTableModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:cardElevation="0dp"
-        android:layout_margin="5dp">
-        <LinearLayout
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="6dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="15dp">
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:padding="16dp">
+
+            <!-- Subject Title -->
+            <TextView
+                android:id="@+id/subjectName"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:weightSum="100"
-                android:layout_marginBottom="5dp">
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:fontFamily="@font/montserrat"
+                android:text="@{timetable.subjectName}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/badgeLecture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mathematics" />
+
+            <!-- Lecture Badge -->
+            <TextView
+                android:id="@+id/badgeLecture"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:weightSum="100"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:id="@+id/studentName_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:text="Subject Name : "
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-                <TextView
-                    android:id="@+id/subjectName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="60"
-                    android:textColor="@color/login_attributes_color"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:background="@drawable/bg_lecture_badge"
+                android:fontFamily="@font/montserrat"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="@{`Lec ` + timetable.lectureNo}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Lec 01" />
+
+            <!-- Day Label -->
+            <TextView
+                android:id="@+id/dayName"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:weightSum="100"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:id="@+id/fatherName_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:text="Start Date : "
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-                <TextView
-                    android:id="@+id/startDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="60"
-                    android:textColor="@color/login_attributes_color"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@{timetable.dayName}"
+                android:textColor="@color/login_attributes_color"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/subjectName"
+                tools:text="Monday" />
+
+            <!-- Time Slot (Start Time - End Time) -->
+            <TextView
+                android:id="@+id/timeSlot"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:weightSum="100"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:id="@+id/description_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:text="End Date :  "
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-                <TextView
-                    android:id="@+id/endDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="60"
-                    android:textColor="@color/login_attributes_color"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="100"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:id="@+id/locationName_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:text="Start Time :  "
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-                <TextView
-                    android:id="@+id/startTime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="60"
-                    android:textColor="@color/login_attributes_color"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="100"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:id="@+id/floorName_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:text="End Time :  "
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-                <TextView
-                    android:id="@+id/endTime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="60"
-                    android:textColor="@color/login_attributes_color"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"
-                    android:textFontWeight="300"
-                    android:fontFamily="@font/montserrat"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@{timetable.startTime + ` - ` + timetable.endTime}"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dayName"
+                tools:text="09:00 AM - 10:30 AM" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>
