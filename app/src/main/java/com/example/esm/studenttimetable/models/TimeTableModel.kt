@@ -5,6 +5,9 @@ data class TimeTableModel(
     var SubjectName: String? = null,
     var StartDate: String? = null,
     var EndDate: String? = null,
+    var DayName: String? = null,
+    var LectureNo: String? = null,
+    var SessionName: String? = null,
     var StartTime: String? = null,
     var EndTime: String? = null
 )
