@@ -114,6 +114,8 @@ open class DashboardFragment : Fragment() {
             inflater.inflate(R.layout.fragment_dashboardgeis, container, false)
         }else if(requireContext().packageName.equals("com.cgss.esm")) {
             inflater.inflate(R.layout.fragment_dashboardcgss, container, false)
+        }else if(requireContext().packageName.equals("com.mes.esm")) {
+            inflater.inflate(R.layout.fragment_dashboardmes, container, false)
         }
         else {
             inflater.inflate(R.layout.fragment_dashboard, container, false)
