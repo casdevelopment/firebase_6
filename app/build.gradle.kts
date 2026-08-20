@@ -188,8 +188,8 @@ android {
         create("GEIs") {
             applicationId = "com.geis.esm"
             dimension = "esm"
-            versionCode = 4
-            versionName = "0.4"
+            versionCode = 5
+            versionName = "0.5"
             resValue("string", "app_name", "GEIs")
             resValue("string", "base_url", "https://coastguards.cyberasol.com/api/api/Mobile/")
             resValue("string", "mobile_code", "346")
