@@ -102,6 +102,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:d85d6479fefd574567ed0e",
+        "android_client_info": {
+          "package_name": "com.dpss.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:632387047947:android:1e092274ba9e686d67ed0e",
         "android_client_info": {
           "package_name": "com.edukala.esm"

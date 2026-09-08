@@ -84,6 +84,12 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("DistrictPublicSchoolSheikhupura") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\dpss\\dpss.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -258,6 +264,18 @@ android {
             manifestPlaceholders["launcher"] = "@drawable/app_icon_mes"
             manifestPlaceholders["launcher_round"] = "@drawable/app_icon_mes"
         }
+        create("DistrictPublicSchoolSheikhupura") {
+            applicationId = "com.dpss.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "District Public School,Sheikhupura")
+            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "mobile_code", "354")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@drawable/app_icon_dpss"
+            manifestPlaceholders["launcher_round"] = "@drawable/app_icon_dpss"
+        }
 
     }
 
@@ -281,6 +299,7 @@ android {
             signingConfig = signingConfigs.getByName("KeystoneAcademy")
             signingConfig = signingConfigs.getByName("BusyBeesSchoolingSystem")
             signingConfig = signingConfigs.getByName("MetropolisEducationSytstem")
+            signingConfig = signingConfigs.getByName("DistrictPublicSchoolSheikhupura")
 
 
             proguardFiles(
@@ -362,7 +381,7 @@ dependencies {
     implementation (project(":calendar"))
     ////
 
-
+    implementation("androidx.biometric:biometric:1.1.0")
 
     // In App Update
     // implementation ("com.google.android.play:core:1.10.3")

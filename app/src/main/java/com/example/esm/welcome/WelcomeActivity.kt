@@ -244,6 +244,9 @@ class WelcomeActivity : AppCompatActivity(), WelcomeAdapter.onItemClickListener 
         }else  if (packageName.equals("com.mes.esm")){
             val studentList = parseJson(AppConstants.DummyJsonResponseMES)
             setRecyclerView(studentList)
+        }else  if (packageName.equals("com.dpss.esm")){
+            val studentList = parseJson(AppConstants.DummyJsonResponseDPSS)
+            setRecyclerView(studentList)
         }
     }
 

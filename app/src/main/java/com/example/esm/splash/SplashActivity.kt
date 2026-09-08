@@ -20,6 +20,7 @@ import com.example.esm.databinding.ActivitySplashBassBinding
 import com.example.esm.databinding.ActivitySplashBinding
 import com.example.esm.databinding.ActivitySplashBusybeeBinding
 import com.example.esm.databinding.ActivitySplashCgssBinding
+import com.example.esm.databinding.ActivitySplashDpssBinding
 import com.example.esm.databinding.ActivitySplashEdukalaBinding
 import com.example.esm.databinding.ActivitySplashFssaBinding
 import com.example.esm.databinding.ActivitySplashGeisBinding
@@ -71,6 +72,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var bindingKeystone: ActivitySplashKeystoneBinding
     lateinit var bindingBusyBee: ActivitySplashBusybeeBinding
     lateinit var bindingMes: ActivitySplashMesBinding
+    lateinit var bindingDpss: ActivitySplashDpssBinding
 
   //  var sisaDelay:Long=14000
 
@@ -95,6 +97,7 @@ class SplashActivity : AppCompatActivity() {
         bindingKeystone = ActivitySplashKeystoneBinding.inflate(layoutInflater)
         bindingBusyBee = ActivitySplashBusybeeBinding.inflate(layoutInflater)
         bindingMes = ActivitySplashMesBinding.inflate(layoutInflater)
+        bindingDpss = ActivitySplashDpssBinding.inflate(layoutInflater)
 
 
 
@@ -137,6 +140,8 @@ class SplashActivity : AppCompatActivity() {
        }else if (packageName.equals("com.mes.esm")) {
            setContentView(bindingMes.root)
            setupVideoFromAssets("mes_splash_screen .mp4")
+       }else if (packageName.equals("com.dpss.esm")) {
+           setContentView(bindingDpss.root)
        }
 
 

@@ -29,6 +29,11 @@ import com.example.esm.welcome.WelcomeActivity
 import com.google.android.material.button.MaterialButton
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+import androidx.biometric.BiometricPrompt
+
 
 class LoginActivity <T>: AppCompatActivity() {
     val sharedPrefsHelper: SharedPrefsHelper by inject()
@@ -38,6 +43,7 @@ class LoginActivity <T>: AppCompatActivity() {
     private lateinit var mobileCode : EditText
     private lateinit var etPassword : EditText
     private lateinit var proceedButton : MaterialButton
+    private lateinit var btnBiometric: MaterialButton
     private lateinit var phoneNoError : TextView
     private lateinit var entityCodeError : TextView
     private lateinit var passwordError : TextView
@@ -111,6 +117,10 @@ class LoginActivity <T>: AppCompatActivity() {
           setContentView(R.layout.activity_login_busybee)
       }else  if (packageName.equals("com.mes.esm")) {
           setContentView(R.layout.activity_login_mes)
+          btnBiometric = findViewById(R.id.btnBiometric)
+          setupBiometricForMes()
+      }else  if (packageName.equals("com.dpss.esm")) {
+          setContentView(R.layout.activity_login_dpss)
       }
 
 
@@ -393,6 +403,75 @@ class LoginActivity <T>: AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun setupBiometricForMes() {
+        // Execute biometric feature exclusively for com.mes.esm package
+        if (packageName.equals("com.mes.esm")) {
+            if (isBiometricAvailable()) {
+                btnBiometric.visibility = View.VISIBLE
+                btnBiometric.setOnClickListener {
+                    showBiometricPrompt()
+                }
+            } else {
+                btnBiometric.visibility = View.GONE
+            }
+        } else {
+            btnBiometric.visibility = View.GONE
+        }
+    }
+
+    private fun isBiometricAvailable(): Boolean {
+        val biometricManager = BiometricManager.from(this)
+        return when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
+            BiometricManager.BIOMETRIC_SUCCESS -> true
+            else -> false
+        }
+    }
+
+    private fun showBiometricPrompt() {
+        val executor = ContextCompat.getMainExecutor(this)
+        val biometricPrompt = BiometricPrompt(
+            this,
+            executor,
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+
+                    // Verify stored session/user credentials or proceed to home activity
+                    val savedUserId = sharedPrefsHelper.getUserId()
+                    if (!savedUserId.isNullOrEmpty()) {
+                        val intent = Intent(this@LoginActivity, WelcomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Please perform standard login at least once before using Biometrics.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(this@LoginActivity, "Authentication error: $errString", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    Toast.makeText(this@LoginActivity, "Authentication failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+
+        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Biometric Authentication")
+            .setSubtitle("Log in using your biometric credentials")
+            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+            .build()
+
+        biometricPrompt.authenticate(promptInfo)
     }
 
 
