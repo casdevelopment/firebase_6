@@ -284,25 +284,25 @@ class WelcomeActivity : AppCompatActivity(), WelcomeAdapter.onItemClickListener 
     private fun notificationData(students: List<StudentDataModel>) {
         Log.v("notificationData", "STUDENT_ID- " + AppConstants.NOTIFICATION_STD_ID)
         Log.v("notificationData", "BUTTON_TYPE- " + AppConstants.BUTTON_TYPE)
-        if (AppConstants.NOTIFICATION_STD_ID != null && AppConstants.BUTTON_TYPE != null) {
-            for (i in students.indices) {
-                if (AppConstants.NOTIFICATION_STD_ID ==  students[i].StudentId.toString()) {
-                    AppConstants.STUDENT_NAME = students[i].StudentName.toString()
-                    AppConstants.CLASS_NAME = students[i].ClassName + students[i].SectionName
-                    AppConstants.SCHOOL_NAME = students[i].SchoolName.toString()
-                    AppConstants.STUDENT_ID = students[i].StudentId ?: 0
-                    AppConstants.STUDENT_SCHOOL_LOGO = students[i].SchoolLogoString.toString()
+        if (AppConstants.NOTIFICATION_STD_ID.isNotEmpty() && AppConstants.BUTTON_TYPE.isNotEmpty()) {
+            // 1. Find matching student directly without manually iterating with indices
+            val matchingStudent = students.find { AppConstants.NOTIFICATION_STD_ID == it.StudentId.toString() }
 
-                    if(AppUtils.checkConnectivity(this@WelcomeActivity)){
+            matchingStudent?.let { student ->
+                // 2. Assign static AppConstants properties once
+                AppConstants.STUDENT_NAME = student.StudentName.toString()
+                AppConstants.CLASS_NAME = "${student.ClassName}${student.SectionName}"
+                AppConstants.SCHOOL_NAME = student.SchoolName.toString()
+                AppConstants.STUDENT_ID = student.StudentId ?: 0
+                AppConstants.STUDENT_SCHOOL_LOGO = student.SchoolLogoString.toString()
 
-                        DataHolder.studentModel = students[i]
-                        val intent = Intent(this@WelcomeActivity, DashboardActivity::class.java)
-
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(this, "Internet is not available", Toast.LENGTH_SHORT)
-                            .show()
-                    }
+                // 3. Handle network check and navigation
+                if (AppUtils.checkConnectivity(this@WelcomeActivity)) {
+                    DataHolder.studentModel = student
+                    val intent = Intent(this@WelcomeActivity, DashboardActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this@WelcomeActivity, "Internet is not available", Toast.LENGTH_SHORT).show()
                 }
             }
         }

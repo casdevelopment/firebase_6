@@ -80,6 +80,8 @@ class NoticeFragment : Fragment() , DashboardAdapter.onItemClickListener {
         arrayList.add(4, DashboardModel(R.drawable.misconduct,"Misconduct"))
         arrayList.add(5, DashboardModel(R.drawable.sports,"Sports"))
         arrayList.add(6, DashboardModel(R.drawable.ptm,"Parent Teacher Meeting"))
+        arrayList.add(7, DashboardModel(R.drawable.datesheet,"Time Table"))
+        arrayList.add(8, DashboardModel(R.drawable.general,"Images"))
         binding.noticeRecyclerview.adapter = DashboardAdapter(arrayList,this)
     }
 
@@ -112,6 +114,14 @@ class NoticeFragment : Fragment() , DashboardAdapter.onItemClickListener {
             val action = NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(7)
             findNavController().navigate(action)
 
+        }else if (position == 7){
+            val action = NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(8)
+            findNavController().navigate(action)
+
+        }else if (position == 8){
+            val action = NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(9)
+            findNavController().navigate(action)
+
         }
 
     }
@@ -125,6 +135,8 @@ class NoticeFragment : Fragment() , DashboardAdapter.onItemClickListener {
             4 -> NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(5)
             5 -> NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(6)
             6 -> NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(7)
+            7 -> NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(8)
+            8 -> NoticeFragmentDirections.actionNoticeFragmentToCommonApiFragment(9)
             else -> null
         }
 

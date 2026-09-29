@@ -170,8 +170,8 @@ android {
         create("CitiGrammarSchoolSialkot") {
             applicationId = "com.cgss.esm"
             dimension = "esm"
-            versionCode = 3
-            versionName = "0.3"
+            versionCode = 4
+            versionName = "0.4"
             resValue("string", "app_name", "CGS Sialkot")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "347")
@@ -194,8 +194,8 @@ android {
         create("GEIs") {
             applicationId = "com.geis.esm"
             dimension = "esm"
-            versionCode = 5
-            versionName = "0.5"
+            versionCode = 6
+            versionName = "0.6"
             resValue("string", "app_name", "GEIs")
             resValue("string", "base_url", "https://coastguards.cyberasol.com/api/api/Mobile/")
             resValue("string", "mobile_code", "346")

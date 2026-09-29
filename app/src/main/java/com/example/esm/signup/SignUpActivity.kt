@@ -89,35 +89,25 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun setView() {
-       if (packageName.equals("com.bass.esm")) {
-           setContentView(R.layout.activity_sign_up_bass)
-       }else if (packageName.equals("com.kpsi.esm")){
-           setContentView(R.layout.activity_sign_up_kpsi)
-       }else if (packageName.equals("com.fssa.esm")) {
-           setContentView(R.layout.activity_sign_up_fssa)
-       }else if (packageName.equals("com.rha.esm")) {
-           setContentView(R.layout.activity_sign_up_rha)
-       }else if (packageName.equals("com.edukala.esm")) {
-           setContentView(R.layout.activity_sign_up_edukala)
-       }else if (packageName.equals("com.cgss.esm")) {
-           setContentView(R.layout.activity_sign_up_cgss)
-       }else if (packageName.equals("com.sunacademy.esm")) {
-           setContentView(R.layout.activity_sign_up_sun)
-       }else if (packageName.equals("com.geis.esm")) {
-           setContentView(R.layout.activity_sign_up_geis)
-       }else if (packageName.equals("com.agora.esm")) {
-           setContentView(R.layout.activity_sign_up_agora)
-       }else if (packageName.equals("com.apsgujrawala.esm")) {
-           setContentView(R.layout.activity_sign_up_aps)
-       }else if (packageName.equals("com.keystoneacademy.esm")) {
-           setContentView(R.layout.activity_sign_up_keystone)
-       }else  if (packageName.equals("com.busybees.esm")) {
-           setContentView(R.layout.activity_sign_up_busybee)
-       }else  if (packageName.equals("com.mes.esm")) {
-           setContentView(R.layout.activity_sign_up_mes)
-       }else  if (packageName.equals("com.dpss.esm")) {
-           setContentView(R.layout.activity_sign_up_dpss)
-       }
+        val layoutRes = when (packageName) {
+            "com.bass.esm" -> R.layout.activity_sign_up_bass
+            "com.kpsi.esm" -> R.layout.activity_sign_up_kpsi
+            "com.fssa.esm" -> R.layout.activity_sign_up_fssa
+            "com.rha.esm" -> R.layout.activity_sign_up_rha
+            "com.edukala.esm" -> R.layout.activity_sign_up_edukala
+            "com.cgss.esm" -> R.layout.activity_sign_up_cgss
+            "com.sunacademy.esm" -> R.layout.activity_sign_up_sun
+            "com.geis.esm" -> R.layout.activity_sign_up_geis
+            "com.agora.esm" -> R.layout.activity_sign_up_agora
+            "com.apsgujrawala.esm" -> R.layout.activity_sign_up_aps
+            "com.keystoneacademy.esm" -> R.layout.activity_sign_up_keystone
+            "com.busybees.esm" -> R.layout.activity_sign_up_busybee
+            "com.mes.esm" -> R.layout.activity_sign_up_mes
+            "com.dpss.esm" -> R.layout.activity_sign_up_dpss
+            else -> R.layout.activity_sign_up // Recommended fallback
+        }
+
+        setContentView(layoutRes)
     }
     private fun setMobileCode() {
 
