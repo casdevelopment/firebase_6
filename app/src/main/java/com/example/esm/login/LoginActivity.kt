@@ -117,8 +117,8 @@ class LoginActivity <T>: AppCompatActivity() {
           setContentView(R.layout.activity_login_busybee)
       }else  if (packageName.equals("com.mes.esm")) {
           setContentView(R.layout.activity_login_mes)
-          btnBiometric = findViewById(R.id.btnBiometric)
-          setupBiometricForMes()
+         // btnBiometric = findViewById(R.id.btnBiometric)
+      //    setupBiometricForMes()
       }else  if (packageName.equals("com.dpss.esm")) {
           setContentView(R.layout.activity_login_dpss)
       }

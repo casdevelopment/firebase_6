@@ -189,6 +189,7 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
+
                 android:id="@+id/btnBiometric"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
@@ -200,7 +201,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:strokeColor="@color/colorPrimary"
                 app:strokeWidth="1dp"
                 app:icon="@drawable/ic_fingerprint"
