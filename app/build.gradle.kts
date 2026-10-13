@@ -255,8 +255,8 @@ android {
         create("MetropolisEducationSytstem") {
             applicationId = "com.mes.esm"
             dimension = "esm"
-            versionCode = 3
-            versionName = "0.4"
+            versionCode = 4
+            versionName = "0.5"
             resValue("string", "app_name", "Metropolis Education Sytstem")
             resValue("string", "base_url", "https://portal.metropolis.edu.pk/api/api/Mobile/")
             resValue("string", "mobile_code", "356")
