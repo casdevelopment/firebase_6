@@ -121,8 +121,8 @@ android {
         create("KPSI") {
             applicationId = "com.kpsi.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "KPSI")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "344")
@@ -133,8 +133,8 @@ android {
         create("FourStarsSchoolAcademy") {
             applicationId = "com.fssa.esm"
             dimension = "esm"
-            versionCode = 3
-            versionName = "0.3"
+            versionCode = 4
+            versionName = "0.4"
             resValue("string", "app_name", "Four Stars School & Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "163")
@@ -146,8 +146,8 @@ android {
         create("RockhillAcademy") {
             applicationId = "com.rha.esm"
             dimension = "esm"
-            versionCode = 6
-            versionName = "0.6"
+            versionCode = 7
+            versionName = "0.7"
             resValue("string", "app_name", "Rockhill Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "320")
@@ -158,8 +158,8 @@ android {
         create("EduactorsKalaske") {
             applicationId = "com.edukala.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "Eduactors Kalaske")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "345")
@@ -170,8 +170,8 @@ android {
         create("CitiGrammarSchoolSialkot") {
             applicationId = "com.cgss.esm"
             dimension = "esm"
-            versionCode = 4
-            versionName = "0.4"
+            versionCode = 5
+            versionName = "0.5"
             resValue("string", "app_name", "CGS Sialkot")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "347")
@@ -182,8 +182,8 @@ android {
         create("SunAcademy") {
             applicationId = "com.sunacademy.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "Sun Academy")
             resValue("string", "base_url", "https://portal.sunacademy.com.pk/api/api/Mobile/")
             resValue("string", "mobile_code", "343")
@@ -194,8 +194,8 @@ android {
         create("GEIs") {
             applicationId = "com.geis.esm"
             dimension = "esm"
-            versionCode = 6
-            versionName = "0.6"
+            versionCode = 7
+            versionName = "0.7"
             resValue("string", "app_name", "GEIs")
             resValue("string", "base_url", "https://coastguards.cyberasol.com/api/api/Mobile/")
             resValue("string", "mobile_code", "346")
@@ -207,8 +207,8 @@ android {
         create("AgoraSignatureSchools") {
             applicationId = "com.agora.esm"
             dimension = "esm"
-            versionCode = 2
-            versionName = "0.2"
+            versionCode = 3
+            versionName = "0.3"
             resValue("string", "app_name", "Agora Signature Schools")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "351")
@@ -219,8 +219,8 @@ android {
         create("APSGujranwala") {
             applicationId = "com.apsgujrawala.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "APS Gujranwala")
             resValue("string", "base_url", "https://apsgwa.cyberasol.com/api/api/Mobile/")
             resValue("string", "mobile_code", "350")
@@ -231,8 +231,8 @@ android {
         create("KeystoneAcademy") {
             applicationId = "com.keystoneacademy.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "Keystone Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "352")
@@ -243,8 +243,8 @@ android {
         create("BusyBeesSchoolingSystem") {
             applicationId = "com.busybees.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "Busy Bees School and Daycare")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "355")
@@ -255,9 +255,9 @@ android {
         create("MetropolisEducationSytstem") {
             applicationId = "com.mes.esm"
             dimension = "esm"
-            versionCode = 4
-            versionName = "0.5"
-            resValue("string", "app_name", "Metropolis Education Sytstem")
+            versionCode = 5
+            versionName = "0.6"
+            resValue("string", "app_name", "MES Parents Portal")
             resValue("string", "base_url", "https://portal.metropolis.edu.pk/api/api/Mobile/")
             resValue("string", "mobile_code", "356")
             manifestPlaceholders["authorities"] = "$applicationId.provide"
@@ -267,8 +267,8 @@ android {
         create("DistrictPublicSchoolSheikhupura") {
             applicationId = "com.dpss.esm"
             dimension = "esm"
-            versionCode = 1
-            versionName = "0.1"
+            versionCode = 2
+            versionName = "0.2"
             resValue("string", "app_name", "District Public School,Sheikhupura")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "354")
