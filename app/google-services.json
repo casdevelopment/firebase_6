@@ -45,6 +45,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:632387047947:android:15a15c7eadfaef0067ed0e",
+        "android_client_info": {
+          "package_name": "com.bec.esm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqjwSBVa0PHVCcjpAxipF39NZXs-z3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:632387047947:android:879f3fb8a7649d9e67ed0e",
         "android_client_info": {
           "package_name": "com.busybees.esm"

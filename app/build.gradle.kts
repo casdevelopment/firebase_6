@@ -90,6 +90,12 @@ android {
             keyAlias = "esm"
             keyPassword = "esm123*"
         }
+        create("BritishEducationCentre") {
+            storeFile = file("E:\\AndroidProject\\ESM_Firebase6\\bec\\bec.jks")
+            storePassword = "esm123*"
+            keyAlias = "esm"
+            keyPassword = "esm123*"
+        }
 
 
     }
@@ -276,6 +282,18 @@ android {
             manifestPlaceholders["launcher"] = "@drawable/app_icon_dpss"
             manifestPlaceholders["launcher_round"] = "@drawable/app_icon_dpss"
         }
+        create("BritishEducationCentre") {
+            applicationId = "com.bec.esm"
+            dimension = "esm"
+            versionCode = 1
+            versionName = "0.1"
+            resValue("string", "app_name", "British Education Centre")
+            resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
+            resValue("string", "mobile_code", "357")
+            manifestPlaceholders["authorities"] = "$applicationId.provide"
+            manifestPlaceholders["launcher"] = "@drawable/app_icon_dpss"
+            manifestPlaceholders["launcher_round"] = "@drawable/app_icon_bec"
+        }
 
     }
 
@@ -300,6 +318,7 @@ android {
             signingConfig = signingConfigs.getByName("BusyBeesSchoolingSystem")
             signingConfig = signingConfigs.getByName("MetropolisEducationSytstem")
             signingConfig = signingConfigs.getByName("DistrictPublicSchoolSheikhupura")
+            signingConfig = signingConfigs.getByName("BritishEducationCentre")
 
 
             proguardFiles(
