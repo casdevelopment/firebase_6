@@ -291,7 +291,7 @@ android {
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "357")
             manifestPlaceholders["authorities"] = "$applicationId.provide"
-            manifestPlaceholders["launcher"] = "@drawable/app_icon_dpss"
+            manifestPlaceholders["launcher"] = "@drawable/app_icon_bec"
             manifestPlaceholders["launcher_round"] = "@drawable/app_icon_bec"
         }
 

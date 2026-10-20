@@ -104,11 +104,18 @@
     <color name="end_color_item">#0A336F</color>-->
 
     <!--DPSS-->
-    <color name="colorPrimary">#732221</color>
+   <!-- <color name="colorPrimary">#732221</color>
     <color name="colorPrimaryDark">#591818</color>
     <color name="colorAccent">#ebc012</color>
     <color name="start_color_item">#732221</color>
-    <color name="end_color_item">#591818</color>
+    <color name="end_color_item">#591818</color> -->
+
+    <!--BEC-->
+    <color name="colorPrimary">#0A4EA4</color>
+    <color name="colorPrimaryDark">#073D81</color>
+    <color name="colorAccent">#ebc012</color>
+    <color name="start_color_item">#0A4EA4</color>
+    <color name="end_color_item">#073D81</color>
 
 
 

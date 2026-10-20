@@ -104,6 +104,7 @@ class SignUpActivity : AppCompatActivity() {
             "com.busybees.esm" -> R.layout.activity_sign_up_busybee
             "com.mes.esm" -> R.layout.activity_sign_up_mes
             "com.dpss.esm" -> R.layout.activity_sign_up_dpss
+            "com.bec.esm" -> R.layout.activity_sign_up_bec
             else -> R.layout.activity_sign_up // Recommended fallback
         }
 

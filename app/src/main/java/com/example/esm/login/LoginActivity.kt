@@ -121,6 +121,8 @@ class LoginActivity <T>: AppCompatActivity() {
       //    setupBiometricForMes()
       }else  if (packageName.equals("com.dpss.esm")) {
           setContentView(R.layout.activity_login_dpss)
+      }else  if (packageName.equals("com.bec.esm")) {
+          setContentView(R.layout.activity_login_bec)
       }
 
 
