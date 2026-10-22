@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_edit_text_bottom_border"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 android:focusableInTouchMode="true"
                 android:fontFamily="@font/montserrat_regular"
                 android:inputType="phone"
