@@ -5,6 +5,7 @@ import com.example.esm.complaint.models.ComplaintModel
 import com.example.esm.complaint.models.ComplaintResponseList
 import com.example.esm.complaint.models.ComplaintResponseModel
 import com.example.esm.dashboardfragment.models.DashboardFragmentModel
+import com.example.esm.dashboardfragment.models.PushNotificationCountResponse
 import com.example.esm.diary.models.DiaryResponseModel
 import com.example.esm.diary.models.StudentDiaryRequestModel
 import com.example.esm.eventcalendar.models.EventsResponseModel
@@ -109,6 +110,13 @@ interface ApiInterface {
     // for Al_razi
     @POST("GetVocuher")
     suspend fun downloadVoucherApiAlRazi(@Body model: DashboardFragmentModel): Response<String>
+
+    // for cgss
+    @POST("GetPushNotificationCount ")
+    suspend fun getPushNotificationCount(@Body model: DashboardFragmentModel): Response<PushNotificationCountResponse>
+
+    @POST("UpdatePushNotificationReadCount ")
+    suspend fun readPushNotificationCount(@Body model: DashboardFragmentModel): Response<PushNotificationCountResponse>
 
     // for rubrics
     @POST("ChangePassword")

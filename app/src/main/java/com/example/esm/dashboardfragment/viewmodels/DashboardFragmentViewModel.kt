@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.esm.dashboardfragment.models.DashboardFragmentModel
+import com.example.esm.dashboardfragment.models.PushNotificationCountResponse
 import com.example.esm.network.NetworkStates
 import com.example.esm.network.koin_module.Repository
 import kotlinx.coroutines.Dispatchers
@@ -71,6 +72,32 @@ class DashboardFragmentViewModel(private val repository: Repository): ViewModel(
             emit(NetworkStates.loading(null))
             try {
                 emit(NetworkStates.success(data = repository.applyLeave(fields)))
+
+            } catch (e: Exception){
+                emit(NetworkStates.error(data = null, message = e.message?:"something went wrong"))
+            }
+        }
+
+    }
+
+
+    fun getPushNotificationCount(model: DashboardFragmentModel) :LiveData<NetworkStates<Response<PushNotificationCountResponse>>> {
+        return liveData(Dispatchers.IO){
+            emit(NetworkStates.loading(null))
+            try {
+                emit(NetworkStates.success(data = repository.getPushNotificationCount(model)))
+
+            } catch (e: Exception){
+                emit(NetworkStates.error(data = null, message = e.message?:"something went wrong"))
+            }
+        }
+
+    }
+    fun readPushNotificationCount(model: DashboardFragmentModel) :LiveData<NetworkStates<Response<PushNotificationCountResponse>>> {
+        return liveData(Dispatchers.IO){
+            emit(NetworkStates.loading(null))
+            try {
+                emit(NetworkStates.success(data = repository.readPushNotificationCount(model)))
 
             } catch (e: Exception){
                 emit(NetworkStates.error(data = null, message = e.message?:"something went wrong"))

@@ -6,6 +6,7 @@ import com.example.esm.complaint.models.ComplaintModel
 import com.example.esm.complaint.models.ComplaintResponseList
 import com.example.esm.complaint.models.ComplaintResponseModel
 import com.example.esm.dashboardfragment.models.DashboardFragmentModel
+import com.example.esm.dashboardfragment.models.PushNotificationCountResponse
 import com.example.esm.diary.models.DiaryResponseModel
 import com.example.esm.diary.models.StudentDiaryRequestModel
 import com.example.esm.eventcalendar.models.EventsResponseModel
@@ -120,6 +121,13 @@ class Repository(private val apiInterface: ApiInterface) {
 
     suspend fun downloadVoucherApiAlRazi(model: DashboardFragmentModel): Response<String> {
         return apiInterface.downloadVoucherApiAlRazi(model)
+    }
+
+    suspend fun getPushNotificationCount(model: DashboardFragmentModel): Response<PushNotificationCountResponse> {
+        return apiInterface.getPushNotificationCount(model)
+    }
+    suspend fun readPushNotificationCount(model: DashboardFragmentModel): Response<PushNotificationCountResponse> {
+        return apiInterface.readPushNotificationCount(model)
     }
 
      suspend fun getStudentDiary(model: IdentityModel): Response<DiaryResponseModel> {

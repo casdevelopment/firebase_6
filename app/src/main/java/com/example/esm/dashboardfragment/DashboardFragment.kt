@@ -22,12 +22,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.esm.R
 import com.example.esm.dashboardactivity.DashboardActivity
 import com.example.esm.dashboardfragment.models.DashboardFragmentModel
 import com.example.esm.dashboardfragment.models.DashboardItemModel
+import com.example.esm.dashboardfragment.models.GetPushNotificationCountData
 import com.example.esm.dashboardfragment.viewmodels.DashboardFragmentViewModel
 import com.example.esm.network.Status
 import com.example.esm.utils.AppConstants
@@ -37,7 +39,6 @@ import com.example.esm.utils.AppUtils.startLoader
 import com.example.esm.utils.AppUtils.stopLoader
 import com.example.esm.utils.KEY_DUMMY_LOGIN
 import com.example.esm.utils.SharedPrefsHelper
-import com.google.gson.Gson
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.net.MalformedURLException
@@ -62,6 +63,7 @@ open class DashboardFragment : Fragment() {
 
     var permissionCode = 101
     var arrayList:ArrayList<DashboardItemModel> = ArrayList()
+    var pushNotificationCountResponse:ArrayList<GetPushNotificationCountData> = ArrayList()
 
     private lateinit var paymentHistory : RelativeLayout
     private lateinit var attendance : RelativeLayout
@@ -94,6 +96,20 @@ open class DashboardFragment : Fragment() {
     private lateinit var row2 : View
     private lateinit var row3 : View
     private lateinit var row1 : View
+    private lateinit var attendanceDot : View
+    private lateinit var diaryDot : View
+    private lateinit var paymentHistoryDot : View
+    private lateinit var feeCardDot : View
+    private lateinit var downLoadVoucherDot : View
+    private lateinit var noticeDot : View
+    private lateinit var resultsDot : View
+    private lateinit var eventDot : View
+    private lateinit var consultancyDot : View
+    private lateinit var timeTableDot : View
+    private lateinit var alertDot : View
+    private lateinit var hostelDot : View
+
+
     private lateinit var llReportLayout : LinearLayout
     private lateinit var downLoadVoucherLayout : LinearLayout
 
@@ -179,6 +195,28 @@ open class DashboardFragment : Fragment() {
 
         initView()
 
+        if(requireContext().packageName.equals("com.cgss.esm")){
+            attendanceDot = view.findViewById(R.id.attendanceDot)
+            diaryDot = view.findViewById(R.id.diaryDot)
+            paymentHistoryDot = view.findViewById(R.id.paymentHistoryDot)
+            feeCardDot = view.findViewById(R.id.feeCardDot)
+            downLoadVoucherDot = view.findViewById(R.id.downLoadVoucherDot)
+            noticeDot = view.findViewById(R.id.noticeDot)
+            resultsDot = view.findViewById(R.id.resultsDot)
+            eventDot = view.findViewById(R.id.eventDot)
+            consultancyDot = view.findViewById(R.id.consultancyDot)
+            timeTableDot = view.findViewById(R.id.timeTableDot)
+            alertDot = view.findViewById(R.id.alertDot)
+            hostelDot = view.findViewById(R.id.hostelDot)
+
+
+
+            val dashboardFragmentModel = DashboardFragmentModel()
+            dashboardFragmentModel.StudentId = AppConstants.STUDENT_ID
+            dashboardFragmentModel.UserIdentity = sharedPrefsHelper.getUserId().toString()
+            getPushNotificationCount(dashboardFragmentModel)
+        }
+
     }
     fun hideLayout(){
         if (sharedPrefsHelper.getBoolean(KEY_DUMMY_LOGIN, false)){
@@ -199,6 +237,7 @@ open class DashboardFragment : Fragment() {
 
         paymentHistory.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+            callReadNotificationApi(1)
                 val action =
                     DashboardFragmentDirections.actionDashboardFragmentToPaymentHistoryFragment()
                 findNavController().navigate(action)
@@ -211,6 +250,7 @@ open class DashboardFragment : Fragment() {
         }
         attendance.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(2)
                 val action = DashboardFragmentDirections.actionDashboardFragmentToAttendanceFragment()
                 findNavController().navigate(action)
             } else {
@@ -221,6 +261,7 @@ open class DashboardFragment : Fragment() {
         }
         results.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(3)
                 val action = DashboardFragmentDirections.actionDashboardFragmentToResultsFragment()
                 findNavController().navigate(action)
             } else {
@@ -230,6 +271,7 @@ open class DashboardFragment : Fragment() {
         }
         alertSms.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(4)
                 val action = DashboardFragmentDirections.actionDashboardFragmentToAlertSMSFragment()
                 findNavController().navigate(action)
             } else {
@@ -240,6 +282,7 @@ open class DashboardFragment : Fragment() {
 
         notice.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(5)
                 val action = DashboardFragmentDirections.actionDashboardFragmentToNoticeFragment()
                 findNavController().navigate(action)
             } else {
@@ -250,6 +293,7 @@ open class DashboardFragment : Fragment() {
         }
         feeCard.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(6)
                 val action = DashboardFragmentDirections.actionDashboardFragmentToFeeCardFragment()
                 findNavController().navigate(action)
             } else {
@@ -260,6 +304,7 @@ open class DashboardFragment : Fragment() {
         }
         eventsCalendar.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(7)
                 val action =
                     DashboardFragmentDirections.actionDashboardFragmentToEventsCalendarFragment()
                 findNavController().navigate(action)
@@ -271,6 +316,7 @@ open class DashboardFragment : Fragment() {
         }
         complaint.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(8)
                 val action = DashboardFragmentDirections.actionDashboardFragmentToComplaintFragment()
                 findNavController().navigate(action)
             } else {
@@ -281,6 +327,7 @@ open class DashboardFragment : Fragment() {
 
         diary.setOnClickListener {
             if(AppUtils.checkConnectivity(requireActivity())){
+                callReadNotificationApi(9)
                 val action = DashboardFragmentDirections.actionDashboardFragmentToDiaryFragment(1)
                 findNavController().navigate(action)
             } else {
@@ -711,5 +758,112 @@ open class DashboardFragment : Fragment() {
             .show()
     }
 
+    fun getPushNotificationCount(dashboardFragmentModel1: DashboardFragmentModel) {
+        viewModel.getPushNotificationCount(dashboardFragmentModel1).observe(viewLifecycleOwner) {apiResponse->
+
+            when (apiResponse.status) {
+                Status.LOADING -> {
+                    startLoader(requireActivity())
+                    Log.d("pushNotificationCountResponse", "loading")
+                }
+
+                Status.SUCCESS -> {
+                    stopLoader()
+                    if (apiResponse.data != null) {
+                        if (apiResponse.data.isSuccessful) {
+                            Log.d("pushNotificationCountResponse", " pushNotificationCountResponse is succesful")
+                            pushNotificationCountResponse= apiResponse.data.body()!!
+                            Log.d("pushNotificationCountResponse", " pushNotificationCountResponse "+pushNotificationCountResponse.size)
+                            if(pushNotificationCountResponse.isNotEmpty()){
+                                notificationCountData(pushNotificationCountResponse)
+                            }
+
+                        }
+                    }
+                }
+
+                Status.ERROR -> {
+                    stopLoader()
+                    Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
+        }
+    }
+    private fun notificationCountData(pushNotificationCountResponse1: ArrayList<GetPushNotificationCountData>) {
+
+        for (item in pushNotificationCountResponse1) {
+            val buttonType = item.ButtonType.toString()
+            val unReadNotification = item.UnreadNotification
+            Log.v("notificationCountData", "notificationCountData  " + buttonType)
+            Log.v("notificationCountData", "unReadNotification  " + unReadNotification)
+            if(unReadNotification==0){
+                return
+            }
+
+            if (buttonType.equals("1")) {
+               // goToFragment(R.id.action_dashboardFragment_to_paymentHistoryFragment, true)'
+                paymentHistoryDot.visibility=View.VISIBLE
+
+            } else if (buttonType.equals("2")) {
+              //  goToFragment(R.id.action_dashboardFragment_to_attendanceFragment, true)
+                attendanceDot.visibility=View.VISIBLE
+            } else if (buttonType.equals("3")) {
+               // goToFragment(R.id.action_dashboardFragment_to_resultsFragment, true)
+                resultsDot.visibility=View.VISIBLE
+            } else if (buttonType.equals("4")) {
+              //  goToFragment(R.id.action_dashboardFragment_to_alertSMSFragment, true)
+                alertDot.visibility=View.VISIBLE
+            } else if (buttonType.equals("5")) {
+               // goToFragment(R.id.action_dashboardFragment_to_noticeFragment, true)
+                noticeDot.visibility=View.VISIBLE
+            } else if (buttonType.equals("6")) {
+               // goToFragment(R.id.action_dashboardFragment_to_feeCardFragment, true)
+                feeCardDot.visibility=View.VISIBLE
+            } else if (buttonType.equals("7")) {
+                //goToFragment(R.id.action_dashboardFragment_to_eventsCalendarFragment, true)
+                eventDot.visibility=View.VISIBLE
+            } else if (buttonType.equals("8")) {
+               // goToFragment(R.id.action_dashboardFragment_to_complaintFragment, true)
+
+            } else if (buttonType.equals("9")) {
+                Log.v("notificationCountData", "notificationCountData---  " + buttonType)
+                    diaryDot.visibility=View.VISIBLE
+            }
+
+        }
+
+    }
+    fun callReadNotificationApi(buttonType: Int) {
+        if(requireContext().packageName.equals("com.cgss.esm")){
+            val dashboardFragmentModel = DashboardFragmentModel()
+            dashboardFragmentModel.StudentId = AppConstants.STUDENT_ID
+            dashboardFragmentModel.UserIdentity = sharedPrefsHelper.getUserId().toString()
+            dashboardFragmentModel.ButtonType = buttonType
+            viewModel.readPushNotificationCount(dashboardFragmentModel)
+                .observe(viewLifecycleOwner) { apiResponse ->
+
+                    when (apiResponse.status) {
+                        Status.LOADING -> {
+                            // startLoader(requireActivity())
+                            Log.d("pushNotificationCountResponse", "loading")
+                        }
+
+                        Status.SUCCESS -> {
+                            stopLoader()
+                        }
+
+                        Status.ERROR -> {
+                            stopLoader()
+                            /* Toast.makeText(requireContext(), apiResponse.message, Toast.LENGTH_SHORT)
+                                 .show()*/
+                        }
+                    }
+                }
+        }
+
+
+    }
 
 }
