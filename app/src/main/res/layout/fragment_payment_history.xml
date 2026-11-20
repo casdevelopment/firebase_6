@@ -80,7 +80,7 @@
                             android:textColor="@color/colorPrimary" />
 
                         <TextView
-                            android:id="@+id/feeReceiptTv"
+                            android:id="@+id/cell3"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/margin40"
                             android:layout_gravity="center_vertical"

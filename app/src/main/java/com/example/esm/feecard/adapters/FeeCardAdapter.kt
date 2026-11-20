@@ -29,7 +29,7 @@ class FeeCardAdapter( val feeCardlist: ArrayList<FeeCardDetailsModel>) : Recycle
         holder.binding.TPrevBalance.text = feeCardlist[position].TPrevBalance.toString()
         holder.binding.TFeeHeadActualAmount.text = feeCardlist[position].TFeeHeadActualAmount.toString()
         holder.binding.TRemaining.text = feeCardlist[position].TRemaining.toString()
-        Log.v("TRemaining",feeCardlist[position].TRemaining.toString())
+
         if(feeCardlist[position].TRemaining.toString()=="0"){
             holder.binding.TFeeHeadActualAmount.text = "0"
         }

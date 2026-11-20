@@ -6,7 +6,8 @@ data class PaymentHistoryModel(
     val DepositWay: String?= null,
     var Amount: String?= null,
     var FeeDepositId: String?= null,
-    var UC_SchoolId: String?= null
+    var UC_SchoolId: String?= null,
+    var MonthNames: String?= null
 
 )
 

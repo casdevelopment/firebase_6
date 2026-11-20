@@ -237,8 +237,8 @@ android {
         create("KeystoneAcademy") {
             applicationId = "com.keystoneacademy.esm"
             dimension = "esm"
-            versionCode = 2
-            versionName = "0.2"
+            versionCode = 3
+            versionName = "0.3"
             resValue("string", "app_name", "Keystone Academy")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "352")
@@ -249,8 +249,8 @@ android {
         create("BusyBeesSchoolingSystem") {
             applicationId = "com.busybees.esm"
             dimension = "esm"
-            versionCode = 3
-            versionName = "0.3"
+            versionCode = 4
+            versionName = "0.4"
             resValue("string", "app_name", "Busy Bees School and Daycare")
             resValue("string", "base_url", "https://apiesm.cyberasol.com/api/Mobile/")
             resValue("string", "mobile_code", "355")

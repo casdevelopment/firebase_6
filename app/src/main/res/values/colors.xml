@@ -82,19 +82,19 @@
     <color name="end_color_item">#043A1F</color>-->
 
     <!--kingstone-->
-    <!--<color name="colorPrimary">#a27757</color>
+    <color name="colorPrimary">#a27757</color>
     <color name="colorPrimaryDark">#764b2b</color>
     <color name="colorAccent">#00113c</color>
     <color name="start_color_item">#a27757</color>
-    <color name="end_color_item">#764b2b</color>-->
+    <color name="end_color_item">#764b2b</color>
 
 
     <!--bussy bee-->
-    <color name="colorPrimary">#b7cd33</color>
+    <!--<color name="colorPrimary">#b7cd33</color>
     <color name="colorPrimaryDark">#899B1F</color>
     <color name="colorAccent">#ed1c24</color>
     <color name="start_color_item">#b7cd33</color>
-    <color name="end_color_item">#899B1F</color>
+    <color name="end_color_item">#899B1F</color>-->
 
     <!--Metropolis Education Sytstem-->
     <!--<color name="colorPrimary">#0f438b</color>

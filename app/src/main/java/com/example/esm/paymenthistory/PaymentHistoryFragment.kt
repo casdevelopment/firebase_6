@@ -59,13 +59,24 @@ class PaymentHistoryFragment : Fragment() , OnPaymentClickListener{
         (activity as DashboardActivity).backArrowVisible()
         (activity as DashboardActivity).drawIconInvisible()
 
-        if (!requireContext().packageName.equals("com.fssa.esm")) {
-            binding.headerTvLayout.weightSum = 2.0f
+        if (requireContext().packageName.equals("com.fssa.esm")) {
             // 2. Hide the Fee Receipt column
-            binding.feeReceiptTv.visibility = View.GONE
+            binding.cell3.visibility = View.VISIBLE
+            binding.cell3.text="FeeReceipt"
             // Optional: Ensure the layout refreshes
             binding.headerTvLayout.requestLayout()
 
+        }else if (requireContext().packageName.equals("com.busybees.esm")|| requireContext().packageName.equals("com.keystoneacademy.esm")) {
+            // 2. Hide the Fee Receipt column
+            binding.cell3.visibility = View.VISIBLE
+            binding.cell3.text="Deposited Month"
+            // Optional: Ensure the layout refreshes
+            binding.headerTvLayout.requestLayout()
+
+        }else{
+            binding.headerTvLayout.weightSum = 2.0f
+            // 2. Hide 3rd coloum column
+            binding.cell3.visibility = View.GONE
         }
 
 

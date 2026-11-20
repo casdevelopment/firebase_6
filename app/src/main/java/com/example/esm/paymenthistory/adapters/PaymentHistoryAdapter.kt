@@ -37,16 +37,30 @@ class PaymentHistoryAdapter(
         holder.binding.paymenthistoryamount.text = paymentList[position].Amount
 
 
-        if (!requireContext.packageName.equals("com.fssa.esm")) {
-            holder.binding.itemLayout.weightSum = 2.0f
+        if (requireContext.packageName.equals("com.fssa.esm")) {
+           // holder.binding.itemLayout.weightSum = 2.0f
             // 2. Hide the Fee Receipt column
-            holder.binding.downloadReceipt.visibility = View.GONE
+            holder.binding.feeDepositReceipt.visibility = View.VISIBLE
+            holder.binding.feeDepositMonth.visibility = View.GONE
             // Optional: Ensure the layout refreshes
             holder.binding.itemLayout.requestLayout()
 
+        }else if (requireContext.packageName.equals("com.busybees.esm")||requireContext.packageName.equals("com.keystoneacademy.esm")) {
+           // holder.binding.itemLayout.weightSum = 2.0f
+            // 2. Hide the Fee Receipt column
+            holder.binding.feeDepositMonth.visibility = View.VISIBLE
+            holder.binding.feeDepositReceipt.visibility = View.GONE
+            holder.binding.feeDepositMonth.text = paymentList[position].MonthNames
+            // Optional: Ensure the layout refreshes
+            holder.binding.itemLayout.requestLayout()
+
+        }else{
+            holder.binding.itemLayout.weightSum = 2.0f
+            // 2. Hide 3rd coloum column
+            holder.binding.cell3.visibility = View.GONE
         }
 
-        holder.binding.downloadReceipt.setOnClickListener {
+        holder.binding.feeDepositReceipt.setOnClickListener {
             listener.onDownloadReceiptClick(itemData.FeeDepositId.toString(),itemData.UC_SchoolId)
         }
 

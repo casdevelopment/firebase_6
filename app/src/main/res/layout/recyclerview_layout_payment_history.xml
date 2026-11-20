@@ -40,16 +40,27 @@
 
             <LinearLayout
                 android:visibility="visible"
-                android:id="@+id/downloadReceipt"
+                android:id="@+id/cell3"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
                 <ImageView
 
+                    android:id="@+id/feeDepositReceipt"
                     android:background="@drawable/file"
                     android:layout_width="30dp"
                     android:layout_height="30dp"/>
+                <TextView
+                    android:id="@+id/feeDepositMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/login_attributes_color" />
 
 
             </LinearLayout>
